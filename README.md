@@ -67,7 +67,10 @@ The DEMI-MathAnalysis framework is built to guide LLMs through a structured appr
 4. **Solution Generation**:  
    The fine-tuned LLM, now guided by explicit reasoning paths and precise knowledge, produces a step-by-step proof. This involves leveraging methods like ε–δ arguments, limit definitions, and convergence criteria. The aim is to ensure that the solution is not only correct but also rigorously and formally justified.
 
-<img src="https://github.com/ziye2chen/LLMs-for-Mathematical-Analysis/blob/main/img/head.png" alt="head" width="400px">
+<p align="center">
+  <img src="https://github.com/ziye2chen/LLMs-for-Mathematical-Analysis/blob/main/img/framework.png" alt="head" width="600px" />
+</p>
+
 
 **Model Choices**:  
 We have experimented with several LLMs, including both open-source and commercial solutions. Fine-tuning these models on DEMI-MathAnalysis significantly boosts their ability to handle rigor in mathematical analysis. Detailed instructions for model selection, training, and inference are provided in the sections below.

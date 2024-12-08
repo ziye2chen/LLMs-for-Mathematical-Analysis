@@ -1,0 +1,1551 @@
+Number,ProblemType,Problem,Solution
+1_9,Sequences and Limits,"Given a positive sequence $\{a_n\}_{n \geq 0}$ satisfying $\sqrt{a_1} \geq \sqrt{a_0} + 1$ and
+$$
+\left| a_{n+1} - \frac{a_n^2}{a_{n-1}} \right| \leq 1
+$$
+for any positive integer $n$, show that
+$$
+\frac{a_{n+1}}{a_n}
+$$
+converges as $n \to \infty$. Show moreover that $a_n \theta^{-n}$ converges as $n \to \infty$, where $\theta$ is the limit of the sequence $a_{n+1}/a_n$.","We first show that
+\[
+\frac{a_{n+1}}{a_n} > 1 + \frac{1}{\sqrt{a_0}}
+\tag{1.1}
+\]
+by induction on $n$. When $n=0$ this holds by the assumption. Put $\alpha = 1 + 1/\sqrt{a_0}$ for brevity. Suppose that (1.1) holds for $n \leq m$. We then have $a_k > \alpha^k a_0$ for $1 \leq k \leq m+1$. Thus
+\[
+\left| \frac{a_{m+2}}{a_{m+1}} - \frac{a_1}{a_0} \right| 
+\leq \sum_{k=1}^{m+1} \left| \frac{a_{k+1}}{a_k} - \frac{a_k}{a_{k-1}} \right|
+\leq \sum_{k=1}^{m+1} \frac{1}{a_k},
+\]
+which is less than
+\[
+\frac{1}{a_0} \sum_{k=1}^{m+1} \alpha^{-k} < \frac{1}{a_0(\alpha - 1)} = \frac{1}{\sqrt{a_0}}.
+\]
+
+Therefore
+\[
+\frac{a_{m+2}}{a_{m+1}} > \frac{a_1}{a_0} - \frac{1}{\sqrt{a_0}} > 1 + \frac{1}{\sqrt{a_0}};
+\]
+thus (1.1) holds also for $n=m+1$.
+
+Let $p > q$ be any positive integers. In the same way,
+\[
+\left| \frac{a_{p+1}}{a_p} - \frac{a_{q+1}}{a_q} \right|
+\leq \sum_{k=q+1}^p \left| \frac{a_{k+1}}{a_k} - \frac{a_k}{a_{k-1}} \right|
+\leq \sum_{k=q+1}^p \frac{1}{a_k},
+\]
+which is less than
+\[
+\frac{1}{a_q} \sum_{k=1}^{p-q} \frac{1}{\alpha^k} < \frac{\sqrt{a_0}}{a_q}.
+\]
+
+This means that the sequence $\{a_{n+1}/a_n\}$ satisfies the Cauchy criterion since $a_q$ diverges to $\infty$ as $q \to \infty$. Letting $p \to \infty$ in the above inequalities, we get
+\[
+\left| \frac{a_{q+1}}{a_q} - \theta \right| \leq \frac{\sqrt{a_0}}{a_q}.
+\]
+
+Multiplying both sides by $a_q / \theta^{q+1}$, we have
+\[
+\left| \frac{a_{q+1}}{\theta^{q+1}} - \frac{a_q}{\theta^q} \right| 
+\leq \frac{\sqrt{a_0}}{\theta^{q+1}},
+\]
+which shows that the sequence $\{a_n / \theta^n\}$ also satisfies the Cauchy criterion.
+"
+1_2,Sequences and Limits,"Prove that the sequence
+$$
+\left( \frac{1}{n} \right)^n + \left( \frac{2}{n} \right)^n + \cdots + \left( \frac{n}{n} \right)^n
+$$
+converges to $e / (e - 1)$ as $n \to \infty$.","Let $r_n$ and $\epsilon_n$ be the integral and fractional parts of the number $n! e$ respectively. Using the expansion
+$$
+e = 1 + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + \cdots,
+$$
+we have
+$$
+\begin{cases}
+r_n = n! \left( 1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!} \right) \\
+\epsilon_n = \frac{1}{n+1} + \frac{1}{(n+1)(n+2)} + \cdots,
+\end{cases}
+$$
+since
+$$
+\frac{1}{n+1} < \epsilon_n < \frac{1}{n+1} + \frac{1}{(n+1)^2} + \cdots = \frac{1}{n}.
+$$
+
+Thus $\sin(2n! e \pi) = \sin(2\pi \epsilon_n)$. Note that this implies the irrationality of $e$.
+
+Since $n \epsilon_n$ converges to $1$ as $n \to \infty$, we have
+$$
+\lim_{n \to \infty} n \sin(2\pi \epsilon_n) = \lim_{n \to \infty} \frac{\sin(2\pi \epsilon_n)}{\epsilon_n} = 2\pi.
+$$
+
+Hence $n \sin(2n! e \pi)$ converges to $2\pi$ as $n \to \infty$."
+1_7,Sequences and Limits,"For any $0 < \theta < \pi$ and any positive integer $n$, show the inequality
+$$
+\sin\theta + \frac{\sin 2\theta}{2} + \cdots + \frac{\sin n\theta}{n} > 0.
+$$","Denote by $s_n(\theta)$ the left-hand side of the inequality to be shown. Write $\theta$ for $2\vartheta$ for brevity. Since
+$$
+s_n'(\theta) = \Re \left(e^{i\theta} + e^{2i\theta} + \cdots + e^{ni\theta} \right)
+= \frac{\cos(n+1)\vartheta \sin n\vartheta}{\sin\vartheta},
+$$
+we obtain the candidates for extreme points of $s_n(\theta)$ on the interval $(0, \pi]$ by solving the equations $\cos(n+1)\vartheta = 0$ and $\sin n\vartheta = 0$, as follows:
+$$
+\frac{\pi}{n+1}, \frac{2\pi}{n}, \frac{3\pi}{n+1}, \frac{4\pi}{n}, \dots
+$$
+where the last two candidates are $(n-1)\pi/(n+1)$ and $\pi$ if $n$ is even, and $(n-1)\pi/n$ and $n\pi/(n+1)$ if $n$ is odd. In any case $s_n'(\theta)$ vanishes at least at $n$ points in the interval $(0, \pi)$.
+
+Since $s_n'(\theta)$ can be expressed as a polynomial in $\cos\theta$ of degree $n$ and $\cos\theta$ maps the interval $[0, \pi]$ onto $[-1, 1]$ homeomorphically, this polynomial possesses at most $n$ real roots in $[-1, 1]$. Therefore all these roots must be simple and give the actual extreme points of $s_n(\theta)$ except for $\theta = \pi$. Clearly $s_n(\theta)$ is positive in the right neighborhood of the origin, and the maximal and minimal points stand in line alternately from left to right. Thus $s_n(\theta)$ attains its minimal values at the points $2\ell\pi/n \in (0, \pi)$ when $n \geq 3$. In the cases $n=1$ and $n=2$, however, $s_n(\theta)$ has no minimal points in $(0, \pi)$.
+
+Now we will show that $s_n(\theta)$ is positive on the interval $(0, \pi)$ by induction on $n$. This is clear for $n=1$ and $n=2$ since $s_1(\theta) = \sin\theta$ and $s_2(\theta) = (1+\cos\theta)\sin\theta$. Suppose that $s_{n-1}(\theta) > 0$ for some $n \geq 3$. Then the minimal values of $s_n(\theta)$ are certainly attained at some points $2\ell\pi/n \in (0, \pi)$, whose values are
+$$
+s_n\left(\frac{2\ell\pi}{n}\right) = s_{n-1}\left(\frac{2\ell\pi}{n}\right) + \frac{\sin 2\ell\pi}{n}
+= s_{n-1}\left(\frac{2\ell\pi}{n}\right) > 0.
+$$
+
+Therefore $s_n(\theta) > 0$ on the interval $(0, \pi)$.
+"
+1_1,Sequences and Limits,Prove that $n \sin(2n! e \pi)$ converges to $2\pi$ as $n \to \infty$.,"Let $r_n$ and $\epsilon_n$ be the integral and fractional parts of the number $n! e$ respectively. Using the expansion
+$$
+e = 1 + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + \cdots,
+$$
+we have
+$$
+\begin{cases}
+r_n = n! \left( 1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!} \right) \\
+\epsilon_n = \frac{1}{n+1} + \frac{1}{(n+1)(n+2)} + \cdots,
+\end{cases}
+$$
+since
+$$
+\frac{1}{n+1} < \epsilon_n < \frac{1}{n+1} + \frac{1}{(n+1)^2} + \cdots = \frac{1}{n}.
+$$
+
+Thus $\sin(2n! e \pi) = \sin(2\pi \epsilon_n)$. Note that this implies the irrationality of $e$.
+
+Since $n \epsilon_n$ converges to $1$ as $n \to \infty$, we have
+$$
+\lim_{n \to \infty} n \sin(2\pi \epsilon_n) = \lim_{n \to \infty} \frac{\sin(2\pi \epsilon_n)}{\epsilon_n} = 2\pi.
+$$
+
+Hence $n \sin(2n! e \pi)$ converges to $2\pi$ as $n \to \infty$."
+1_10,Sequences and Limits,"Let $E$ be any bounded closed set in the complex plane containing an infinite number of points, and let $M_n$ be the maximum of $|V(x_1, \dots, x_n)|$ as the points $x_1, \dots, x_n$ run through the set $E$, where
+$$
+V(x_1, \dots, x_n) = \prod_{1 \leq i < j \leq n} (x_i - x_j)
+$$
+is the Vandermonde determinant. Show that $M_n^{2/(n(n-1))}$ converges as $n \to \infty$.","Let $\xi_1, \dots, \xi_{n+1}$ be the points at which $|V(x_1, \dots, x_{n+1})|$ attains its maximum $M_{n+1}$. Since
+\[
+\frac{V(\xi_1, \dots, \xi_{n+1})}{V(\xi_1, \dots, \xi_n)} = (\xi_1 - \xi_{n+1}) \cdots (\xi_n - \xi_{n+1}),
+\]
+we have
+\[
+\frac{M_{n+1}}{M_n} \leq |\xi_1 - \xi_{n+1}| \cdots |\xi_n - \xi_{n+1}|.
+\]
+
+Applying the same argument to each point $\xi_1, \dots, \xi_n$, we get $n+1$ similar inequalities whose product gives
+\[
+\left( \frac{M_{n+1}}{M_n} \right)^{n+1} \leq \prod_{i \neq j} |\xi_i - \xi_j| = M_n^2.
+\]
+
+Hence the sequence $M_n^{2/(n(n-1))}$ is monotone decreasing."
+2_10,Infinite Series,"The limit
+\[
+\gamma = \lim_{n \to \infty} \left( 1 + \frac{1}{2} + \cdots + \frac{1}{n} - \log n \right) 
+= 0.5772156649015328606065120\ldots
+\]
+is called Euler's constant or sometimes the Euler-Mascheroni constant. Show that the following series converges to $\gamma$:
+\[
+\frac{1}{2} - \frac{1}{3} + 2 \left( \frac{1}{4} - \frac{1}{5} + \frac{1}{6} - \frac{1}{7} \right) 
++ 3 \left( \frac{1}{8} - \frac{1}{9} + \cdots - \frac{1}{15} \right) + \cdots.
+\]","For brevity put
+\[
+\sigma_n = 1 - \frac{1}{2} + \frac{1}{3} - \cdots + \frac{1}{2n - 1} - \log 2
+\]
+for any positive integer $n$. It is easily seen that
+\[
+\sigma_1 + \sigma_2 + \cdots + \sigma_n = 1 + \frac{1}{2} + \cdots + \frac{1}{2n - 1} - n \log 2;
+\]
+therefore
+\[
+\gamma = \lim_{n \to \infty} (\sigma_1 + \sigma_2 + \cdots + \sigma_n).
+\]
+We have Vacca's formula by noticing that $\sigma_n = \tau_n + \tau_{n+1} + \cdots$, where
+\[
+\tau_n = \frac{1}{2^n} - \frac{1}{2^n + 1} + \frac{1}{2^n + 2} - \cdots - \frac{1}{2^{n+1} - 1}.
+\]"
+2_8,Infinite Series,"Suppose that $\sum_{n=1}^\infty a_n b_n$ converges for any sequence $\{b_n\}$ converging. 
+Then show that $\sum_{n=1}^\infty a_n$ converges absolutely.","Without loss of generality, we can assume that $\{a_n\}$ is a non-negative sequence, since we can take $-b_n$ instead of $b_n$. Suppose, on the contrary, that the series $\sum a_n$ diverges to $\infty$. It follows from the result of \textbf{Problem 2.7} that
+\[
+\sum_{n=1}^\infty \frac{a_n}{a_1 + a_2 + \cdots + a_n} = \infty,
+\]
+contrary to the assumption since
+\[
+b_n = \frac{1}{a_1 + a_2 + \cdots + a_n}
+\]
+converges to $0$ as $n \to \infty$. \qed"
+2_1,Infinite Series,"As is well-known, the harmonic series
+\[
+\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n} + \cdots
+\]
+diverges to $\infty$. Show, however, that the convergence of the subseries removing all terms containing the digit ""7"" in the decimal expression of the denominator.","Any integer in the interval $[10^{k-1}, 10^k)$ has $k$ digits in its decimal expansion. Among these there exist exactly $8 \cdot 9^{k-1}$ integers which do not contain the digit `7' in their decimal expansions. Thus the sum of the subseries defined in the problem, say $S$, can be estimated from above as
+\[
+S < \sum_{k=1}^\infty \frac{8 \cdot 9^{k-1}}{10^{k-1}} = 80.
+\]
+"
+2_7,Infinite Series,"Suppose that $\{a_n\}_{n \geq 1}$ is a non-negative sequence satisfying $\sum_{n=1}^\infty a_n = \infty$.
+Then show that the series
+\[
+\sum_{n=1}^\infty \frac{a_n}{\left(a_1 + a_2 + \cdots + a_n\right)^\alpha}
+\]
+converges when $\alpha > 1$, and diverges when $0 < \alpha \leq 1$.","Put $s_n = a_1 + a_2 + \cdots + a_n$. The convergence is clear when $\alpha > 1$, since
+\[
+\sum_{n=2}^\infty \frac{a_n}{s_n^\alpha} \leq \sum_{n=2}^\infty \int_{s_{n-1}}^{s_n} \frac{dx}{x^\alpha} = \int_{s_1}^\infty \frac{dx}{x^\alpha} < \infty.
+\]
+
+When $0 < \alpha \leq 1$, it suffices to consider the case $\alpha = 1$ since $s_n > 1$ for all sufficiently large $n$. Suppose first that $s_{n-1} < a_n$ for infinitely many $n$'s. We then have $a_n / s_n > 1/2$ for infinitely many $n$'s, which shows the divergence of the series. 
+
+Consider next the case in which $s_{n-1} \geq a_n$ for all integers $n$ greater than some integer $N$. Then
+\[
+\sum_{n>N} \frac{a_n}{s_n} \geq \frac{1}{2} \sum_{n>N} \int_{s_{n-1}}^{s_n} \frac{dx}{x}
+= \frac{1}{2} \int_{s_N}^\infty \frac{dx}{x} = \infty.
+\]
+
+Note that the divergence of the sequence $s_n$ is essential in the second case. \qed"
+2_4,Infinite Series,"For any positive sequence $\{a_n\}_{n \geq 1}$ show the inequality
+\[
+\left( \sum_{n=1}^\infty a_n \right)^4 < \pi^2 \left( \sum_{n=1}^\infty a_n^2 \right) \left( \sum_{n=1}^\infty n^2 a^2_n \right).
+\]
+
+Prove further that the constant $\pi^2$ on the right-hand side cannot in general be replaced by any smaller number.","Put 
+\[
+\alpha = \sum_{n=1}^\infty a_n^2 \quad \text{and} \quad \beta = \sum_{n=1}^\infty n^2 a_n^2
+\]
+for brevity. We of course assume that $\beta$ is finite. Introducing two positive parameters $\sigma$ and $\tau$, we first write
+\[
+\left(\sum_{n=1}^\infty a_n\right)^2 = \left(\sum_{n=1}^\infty a_n \sqrt{\sigma + \tau n^2} \cdot \frac{1}{\sqrt{\sigma + \tau n^2}} \right)^2.
+\]
+Using the Cauchy-Schwarz inequality, this is less than or equal to
+\[
+\sum_{n=1}^\infty \frac{1}{\sigma + \tau n^2} \sum_{n=1}^\infty a_n^2 (\sigma + \tau n^2) = (\sigma \alpha + \beta \tau) \sum_{n=1}^\infty \frac{1}{\sigma + \tau n^2}.
+\]
+Since the function $1/(\sigma + \tau x^2)$ is monotone decreasing on $[0, \infty)$, we obtain
+\[
+\sum_{n=1}^\infty \frac{1}{\sigma + \tau n^2} < \int_0^\infty \frac{dx}{\sigma + \tau x^2} = \frac{\pi}{2 \sqrt{\sigma \tau}},
+\]
+which implies that
+\[
+\left(\sum_{n=1}^\infty a_n\right)^2 < \frac{\pi}{2} \cdot \frac{\sigma \alpha + \beta \tau}{\sqrt{\sigma \tau}}.
+\]
+The right-hand side attains its minimum $\pi \sqrt{\alpha \beta}$ at $\sigma / \tau = \beta / \alpha$.
+
+To see that $\pi^2$ cannot be replaced by any smaller number, we take, for example,
+\[
+a_n = \frac{\sqrt{\rho}}{\rho + n^2}
+\]
+with a positive parameter $\rho$. It then follows from
+\[
+\sqrt{\rho} \int_1^\infty \frac{dx}{\rho + x^2} < \sum_{n=1}^\infty a_n < \sqrt{\rho} \int_0^\infty \frac{dx}{\rho + x^2}
+\]
+that
+\[
+\sum_{n=1}^\infty a_n = \frac{\pi}{2} + O\left(\frac{1}{\sqrt{\rho}}\right)
+\]
+as $\rho \to \infty$. Similarly, we have
+\[
+\sum_{n=1}^\infty a_n^2 = \frac{\pi}{4 \sqrt{\rho}} + O\left(\frac{1}{\rho}\right)
+\]
+and
+\[
+\sum_{n=1}^\infty n^2 a_n^2 = \sqrt{\rho} \sum_{n=1}^\infty a_n - \rho \sum_{n=1}^\infty a_n^2 = \frac{\pi}{4} \sqrt{\rho} + O(1),
+\]
+which imply that
+\[
+\left(\sum_{n=1}^\infty a_n\right)^4 = \frac{\pi^4}{16} + O\left(\frac{1}{\sqrt{\rho}}\right),
+\]
+and
+\[
+\sum_{n=1}^\infty a_n^2 \sum_{n=1}^\infty n^2 a_n^2 = \frac{\pi^2}{16} + O\left(\frac{1}{\sqrt{\rho}}\right)
+\]
+as $\rho \to \infty$."
+2_2,Infinite Series,"Given two series $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$,
+\[
+\sum_{n=0}^\infty (a_0b_n + a_1b_{n-1} + \cdots + a_nb_0)
+\]
+is called the Cauchy product of $\sum a_n$ and $\sum b_n$.
+Suppose that $\sum a_n$ converges absolutely to $\alpha$ and that $\sum b_n$ converges to $\beta$. Show that the Cauchy product converges to $\alpha \beta$.","Let 
+\[
+M = \sum_{n=0}^\infty |a_n| \quad \text{and} \quad s_n = b_0 + b_1 + \cdots + b_n
+\]
+with $|s_n| \leq K$ for some constant $K > 0$. By (a), it suffices to show the convergence of the Cauchy product. To see this, put
+\[
+c_n = \sum_{k=0}^n \left(a_0 b_k + a_1 b_{k-1} + \cdots + a_k b_0\right)
+= a_0 s_n + a_1 s_{n-1} + \cdots + a_n s_0.
+\]
+
+For any $\epsilon > 0$, there exists an integer $N$ satisfying $|s_p - s_q| < \epsilon$ and 
+\[
+|a_q| + \cdots + |a_p| < \epsilon
+\]
+for any integers $p$ and $q$ with $p > q \geq N$. Then for all $p > q > 2N$, we get
+\[
+|c_p - c_q| = \left| \sum_{k=0}^N a_k (s_{p-k} - s_{q-k}) + \sum_{k=N+1}^q a_k (s_{p-k} - s_{q-k}) + \sum_{k=q+1}^p a_k s_{p-k} \right|.
+\]
+
+Clearly, the first sum on the right-hand side is estimated above by
+\[
+M \max_{0 \leq k \leq N} |s_{p-k} - s_{q-k}| < M \epsilon.
+\]
+
+The second and third sums are similarly estimated above by
+\[
+2K \sum_{k=N+1}^p |a_k| < 2K \epsilon.
+\]
+
+This implies that the sequence $\{c_n\}$ satisfies the Cauchy criterion."
+2_2,Infinite Series,"Given two series $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$,
+\[
+\sum_{n=0}^\infty (a_0b_n + a_1b_{n-1} + \cdots + a_nb_0)
+\]
+is called the Cauchy product of $\sum a_n$ and $\sum b_n$.
+Suppose that $\sum a_n$ and $\sum b_n$ converge to $\alpha$ and $\beta$ respectively and that the Cauchy product converges to $\delta$. Show then that $\alpha \beta$ is equal to $\delta$.","Since $a_n \to 0$ and $b_n \to 0$ as $n \to \infty$, both power series 
+\[
+f(x) = \sum_{n=0}^\infty a_n x^n \quad \text{and} \quad g(x) = \sum_{n=0}^\infty b_n x^n
+\]
+converge absolutely for $|x| < 1$. Hence the product
+\[
+f(x)g(x) = \sum_{n=0}^\infty (a_0b_n + a_1b_{n-1} + \cdots + a_nb_0) x^n
+\]
+also converges for $|x| < 1$. It follows from Abel's continuity theorem that $f(x)$, $g(x)$, and $f(x)g(x)$ converge to $\alpha$, $\beta$, and $\alpha \beta$ as $x \to 1^-$. Thus $\delta = \alpha \beta$.
+"
+3_1,Continuous Functions,"Suppose that $f \in C(\mathbb{R})$ and that $f(x+1) - f(x)$ converges to $0$ as $x \to \infty$. Then show that
+\[
+\frac{f(x)}{x}
+\]
+also converges to $0$ as $x \to \infty$. Suppose further that $f(x+y) - f(x)$ converges to $0$ as $x \to \infty$ for an arbitrary fixed $y$. Show then that this convergence is uniform on compact sets in $\mathbb{R}$.","For any $\epsilon > 0$ there exists an integer $N$ satisfying
+\[
+-\epsilon < f(x+1) - f(x) < \epsilon
+\]
+for any $x > N$. Summing the following $\ell = \lfloor x \rfloor - N$ inequalities
+\[
+-\epsilon < f(x-j+1) - f(x-j) < \epsilon
+\]
+for $j = 1, \ldots, \ell$ and for $x \geq N+1$ we get
+\[
+-\epsilon(\lfloor x \rfloor - N) < f(x) - f(x-\ell) < \epsilon(\lfloor x \rfloor - N).
+\]
+Since $N \leq x - \ell < N+1$, it follows from this that
+\[
+-M - \epsilon(x - N + 1) < f(x) < M + \epsilon(x - N),
+\]
+where $M$ is the maximum of $|f(x)|$ on $[N, N+1]$. Therefore
+\[
+\frac{|f(x)|}{x} < \frac{M + \epsilon(x - N + 1)}{x} < \epsilon + \frac{M}{x},
+\]
+which implies that $|f(x)/x| < 2\epsilon$ for any $x > \max\{N+1, M/\epsilon\}$.
+
+To show the latter half of the problem put
+\[
+g_x(y) = \sup_{t \geq x} |f(t+y) - f(t)|,
+\]
+which converges to $0$ as $x \to \infty$ for an arbitrary fixed $y$. If $g_x(y_0) > s$, then there exists $t_0 \geq x$ satisfying $|f(t_0+y_0) - f(t_0)| > s$. By the continuity of $f$, we have $|f(t+y) - f(t)| > s$ for any $(t, y)$ sufficiently close to $(t_0, y_0)$. This means that $g_x(y) > s$ for any $y$ sufficiently close to $y_0$; in other words, the set
+\[
+\{y \in \mathbb{R} : g_x(y) > s\}
+\]
+is an open set. Hence $\{g_n(y)\}$ is a sequence of Borel measurable functions converging pointwise to $0$. By Egoroff's theorem we can find a measurable set $F \subset [-1, 1]$ whose measure is greater than $3/2$ such that $g_n(y)$ converges to $0$ uniformly on $F$; therefore for any $\epsilon > 0$ there exists an integer $N$ satisfying $g_n(y) < \epsilon$ for any $n > N$ and any $y \in F$. By the theorem due to Steinhaus (1920) there exists an interval $I$ such that any point $y$ in $I$ can be expressed as $y = u - v$ with $u, v \in F \cap (-F)$, since the measure of $F \cap (-F)$ is positive. Clearly $-y$ has such an expression, and we can assume that $I$ is contained in the positive real axis. For any non-negative $x$ we have
+\[
+g_n(x+x') = \sup_{t \geq n} |f(t+x+x') - f(t)| \leq \sup_{t \geq n} |f(t+x) - f(t)| + \sup_{t \geq n} |f(t+x') - f(t+x)| = g_n(x) + g_n(x').
+\]
+Applying the above inequality to $y = u - v \in I$ we get
+\[
+g_n(y) = g_n(u-v) \leq g_n(u) + g_n(-v) < 2\epsilon,
+\]
+since the case does not occur in which both $u$ and $-v$ are negative. This implies that $\{g_n(y)\}$ converges to $0$ uniformly on the interval $I$. This is also true on any set consisting of finite parallel translations of $I$ since $g_n(x+x') \leq g_n(x) + g_n(x')$ for any $x \in I$ and $x'$."
+3_2,Continuous Functions,"Let $p_n(x)$ be any polynomial with integer coefficients whose degree is greater than or equal to $1$, and let $I$ be any closed interval of length $\geq 4$. Then show that there exists at least one point $x$ in $I$ satisfying
+\[
+|p_n(x)| \geq 2.
+\]","Let $I$ be any closed interval of length 4. We solve this problem for any polynomial 
+\[
+p_n(x) = a_n x^n + a_{n-1}x^{n-1} + \cdots + a_0
+\]
+with a non-zero integer $a_n$ and real $a_{n-1}, \ldots, a_0$. Since $a_n$ is invariant under parallel translation, we can assume that $I = [-2, 2]$. Let $M$ be the difference of the maximum and the minimum of $p_n$ on the interval $I$. It may be convenient to introduce the notation
+\[
+\sum_{k=0}^n{}^* b_k = b_0 + 2b_1 + 2b_2 + \cdots + 2b_{n-1} + b_n.
+\]
+
+Now for any integer $0 \leq s < n$, put $\omega = -e^{\pi i / n} \neq 1$; hence
+\[
+\sum_{k=0}^n{}^* \omega^k = \frac{(1+\omega)(1-\omega^n)}{1-\omega} = (1 - (-1)^{s+n}) \frac{1+\omega}{1-\omega}.
+\]
+
+Since $\overline{\omega} = \omega^{-1}$, it can be seen that the real part of the above expression vanishes; in other words,
+\[
+\sum_{k=0}^n{}^* (-1)^k \cos\frac{ks}{n}\pi = 0.
+\]
+
+On the other hand, it is clear that $2\cos s\theta = e^{i s \theta} + e^{-i s \theta}$ is a polynomial in $2\cos\theta = e^{i\theta} + e^{-i\theta}$ with integer coefficients of degree $s$. Hence we can write
+\[
+2\cos s\theta = \tau_s(2\cos\theta).
+\]
+
+Since $s$ is arbitrary, we get
+\[
+\sum_{k=0}^n{}^* (-1)^k \alpha_k^s = 0
+\]
+for any $0 \leq s < n$, where 
+\[
+\alpha_k = 2\cos\frac{k\pi}{n}.
+\]
+
+Also for $s = n$,
+\[
+\sum_{k=0}^n{}^* (-1)^k \alpha_k^n = \sum_{k=0}^n{}^* (-1)^k \tau_n(\alpha_k) = 2\sum_{k=0}^n{}^* (-1)^k \cos k\pi = 4n,
+\]
+since the coefficient of the leading term of $\tau_n(x)$ is equal to 1. Hence we have
+\[
+4n|a_n| = \left| \sum_{k=0}^n{}^* (-1)^k p_n(\alpha_k) \right| \leq \sum_{k=0}^{n-1} |p_n(\alpha_k) - p_n(\alpha_{k+1})| \leq nM,
+\]
+which implies that $M \geq 4|a_n| \geq 4$. We thus have $\max_{x \in I} |p_n(x)| \geq 2$. 
+"
+3_6,Continuous Functions,"First put $E_1 = \{0, 1\}$ and suppose that a finite sequence $E_n \subset [0, 1]$ is given. 
+Define $E_{n+1}$ by inserting new fractions $(a+c)/(b+d)$ between every two 
+consecutive fractions $a/b$ and $c/d$ in $E_n$. Of course we understand $0 = 0/1$ 
+and $1 = 1/1$; thus,
+\[
+E_2 = \left\{0, \frac{1}{2}, 1\right\}, \quad E_3 = \left\{0, \frac{1}{3}, \frac{1}{2}, \frac{2}{3}, 1\right\}, \dots
+\]
+
+With the help of the sequence $E_n$, we define the piecewise linear continuous function 
+$\varphi_n(x)$ on the interval $[0, 1]$ such that
+\[
+\varphi_n\left(\frac{a}{b}\right) = \varphi_n\left(\frac{c}{d}\right) = 0, \quad \varphi_n\left(\frac{a+c}{b+d}\right) = \frac{1}{b+d},
+\]
+and $\varphi_n(x)$ is linear on the intervals
+\[
+\left[\frac{a}{b}, \frac{a+c}{b+d}\right] \quad \text{and} \quad \left[\frac{a+c}{b+d}, \frac{c}{d}\right],
+\]
+respectively, for every two successive terms $a/b$ and $c/d$ in $E_n$.
+
+Show then that the series
+\[
+f(x) = \sum_{n=1}^\infty \varphi_n(x)
+\]
+converges at every point $x \in [0, 1]$; more precisely, it converges to $1 - 1/q$ at any rational 
+point $x = p/q \in [0, 1]$ with $(p, q) = 1$ and to $1$ at any irrational point $x$ in $(0, 1)$.","Let $p/q$ be any fraction in the interval $[0, 1]$. The fraction $p/q$ is contained in $E_q$; otherwise, there exist two adjacent fractions $a/b$ and $c/d$ in $E_q$ satisfying
+\[
+\frac{a}{b} < \frac{p}{q} < \frac{c}{d},
+\]
+which implies
+\[
+\frac{1}{bd} = \frac{c}{d} - \frac{a}{b} = \frac{c}{d} - \frac{p}{q} + \frac{p}{q} - \frac{a}{b} \geq \frac{1}{dq} + \frac{1}{bq} \geq \frac{b+d}{bdq} > \frac{1}{bd},
+\]
+a contradiction. We used here the facts that $bc - ad = 1$ and $b + d \geq n + 1$ for any two consecutive fractions $a/b$ and $c/d$ in $E_n$, which can be easily verified by induction on $n$.
+
+We next show that 
+\[
+f\left(\frac{a}{b}\right) = 1 - \frac{1}{b} \tag{3.1}
+\]
+for any fraction $a/b$ belonging to $E_n$ by induction on $n$. Clearly, it holds for $a/b = 0/1$ and $1/1$ since $\phi_m(0) = \phi_m(1) = 0$ for all positive integer $m$. Suppose (3.1) holds for any $a/b \in E_n$. By definition, we have
+\[
+f\left(\frac{a}{b}\right) = \phi_1\left(\frac{a}{b}\right) + \cdots + \phi_{b-1}\left(\frac{a}{b}\right) = 1 - \frac{1}{b},
+\]
+since $a/b \in E_k$ for all $k \geq b$. Let $a/b$ and $c/d$ be any successive fractions in $E_n$ and consider the fraction $(a+c)/(b+d) \in E_{n+1}$. Since
+\[
+\Phi(x) = \phi_1(x) + \cdots + \phi_{n-1}(x)
+\]
+is a linear function on the interval $[a/b, c/d]$, we get
+\[
+\Phi\left(\frac{a+c}{b+d}\right) = 1 - \frac{1}{b} + \frac{1/b - 1/d}{c/d - a/b} \left(\frac{a+c}{b+d} - \frac{a}{b}\right) = 1 - \frac{2}{b+d}.
+\]
+Hence
+\[
+f\left(\frac{a+c}{b+d}\right) = \Phi\left(\frac{a+c}{b+d}\right) + \phi_n\left(\frac{a+c}{b+d}\right) = 1 - \frac{1}{b+d},
+\]
+by definition. Therefore, (3.1) holds for any rational point in the interval $[0, 1]$.
+
+Let $m$ be any positive integer. Since the piecewise linear function $\Phi_m(x)$ takes the value less than 1 at any point belonging to $E_{m+1}$, as is already seen above, it follows clearly that $\Phi_m(x) < 1$ for all $x \in [0, 1]$. Thus the series
+\[
+\sum_{n=1}^\infty \phi_n(x)
+\]
+converges at every irrational point $x$. Let $a/b$ and $c/d$ be any adjacent fractions in $E_{m+1}$ satisfying $a/b < x < c/d$. We then have
+\[
+\Phi_m(x) \geq \min\left\{\Phi_m\left(\frac{a}{b}\right), \Phi_m\left(\frac{c}{d}\right)\right\}
+= \min\left\{1 - \frac{1}{b}, 1 - \frac{1}{d}\right\}.
+\]
+Since $x$ is irrational, both $b$ and $d$ must diverge to $\infty$ as $m \to \infty$; so, $f(x) = 1$, as required."
+3_3,Continuous Functions,"Let $f_n \in C[a, b]$ be a monotone increasing sequence
+\[
+f_1(x) \leq f_2(x) \leq \cdots,
+\]
+which converges pointwise to $f(x) \in C[a, b]$. Show that the convergence is uniform on $[a, b]$.","For any $\epsilon > 0$ define the set
+\[
+E_n = \{x \in [a, b] : |f(x) - f_n(x)| \geq \epsilon\}.
+\]
+
+Then $\{E_n\}$ is a sequence of monotone decreasing compact sets in view of the continuity of $f_n$ and $f$. Suppose now that $E_n$ is not empty for any positive integer $n$. It then follows that
+\[
+\bigcap_{n=1}^\infty E_n \neq \emptyset.
+\]
+
+Let $x_0$ be some point belonging to all the sets $E_n$. But this means that $\{f_n(x_0)\}$ does not converge to $f(x_0)$, contrary to the assumption. Thus $E_n$ is empty for all sufficiently large $n$; in other words, $|f(x) - f_n(x)| < \epsilon$ for any $x \in [a, b]$. "
+4_8,Diﬀerentiation,"Suppose that $f \in C^1(0, \infty)$ is positive. Then show that for an arbitrary constant $a > 1$,
+\[
+\liminf_{x \to \infty} \frac{f'(x)}{(f(x))^a} \leq 0.
+\]","Suppose, contrary to the assertion, that there are positive numbers $\delta$ and $x_0$ satisfying
+\[
+\delta < \frac{f'(x)}{(f(x))^a}
+\]
+for any $x > x_0$. Then integrating from $x_0$ to $x$ we have
+\[
+\delta(x - x_0) < \int_{x_0}^x \frac{f'(t)}{(f(t))^a} dt = \frac{1}{a-1} \left( \frac{1}{(f(x_0))^{a-1}} - \frac{1}{(f(x))^{a-1}} \right).
+\]
+Thus
+\[
+\frac{1}{(f(x_0))^{a-1}} > \frac{1}{(f(x))^{a-1}} + (a-1)\delta(x - x_0) > (a-1)\delta(x - x_0),
+\]
+where the right-hand side diverges to $\infty$ together with $x$, giving a contradiction."
+4_2,Diﬀerentiation,"Show that any $f \in C^2(\mathbb{R})$ satisfies the inequality
+\[
+\left( \sup_{x \in \mathbb{R}} |f'(x)| \right)^2 \leq 2 \sup_{x \in \mathbb{R}} |f(x)| \cdot \sup_{x \in \mathbb{R}} |f''(x)|.
+\]
+Prove moreover that the constant $2$ on the right-hand side cannot in general be replaced by any smaller number.","Put
+\[
+\alpha = \sup_{x \in \mathbb{R}} |f(x)| \quad \text{and} \quad \beta = \sup_{x \in \mathbb{R}} |f''(x)|.
+\]
+We may of course assume that both $\alpha$ and $\beta$ are finite. If $\beta$ vanishes, then $\alpha$ is finite if and only if $f(x)$ vanishes everywhere; therefore we can also assume that $\beta$ is positive. For any $x$ and positive $y$ it follows from Taylor's formula that there is a $\xi_{x,y}$ satisfying
+\[
+f(x+y) = f(x) + f'(x)y + f''(\xi_{x,y}) \frac{y^2}{2}.
+\]
+Therefore we have
+\[
+f(x+y) - f(x-y) = 2f'(x)y + \left(f''(\xi_{x,y}) - f''(\xi_{x,-y})\right) \frac{y^2}{2},
+\]
+which implies that
+\[
+2|f'(x)|y = |f(x+y) - f(x-y) + \left(f''(\xi_{x,y}) - f''(\xi_{x,-y})\right) \frac{y^2}{2}|
+\leq 2\alpha + \beta y^2.
+\]
+Thus we get
+\[
+\sup_{x \in \mathbb{R}} |f'(x)| \leq \frac{\alpha}{y} + \frac{\beta y}{2},
+\]
+where the right-hand side attains its minimum $\sqrt{2\alpha \beta}$ at $y = \sqrt{2\alpha / \beta}$.
+
+To see that 2 is the best possible constant we first define an even step function
+\[
+\phi''(x) = 
+\begin{cases} 
+0 & \text{for } |x| > 2, \\
+1 & \text{for } 1 \leq |x| \leq 2, \\
+-1 & \text{for } |x| < 1.
+\end{cases}
+\]
+Then
+\[
+\phi'(x) = \int_{-2}^x \phi''(t) \, dt
+\]
+is an odd piecewise linear continuous function and in turn
+\[
+\phi(x) = \int_{-2}^x \phi'(t) \, dt - \frac{1}{2}
+\]
+is an even $C^1$-function. The maxima of $|\phi(x)|$, $|\phi'(x)|$ and $|\phi''(x)|$ are clearly $1/2$, $1$, and $1$ respectively. The equality certainly holds in this example. However $\phi$ does not belong to $C^2(\mathbb{R})$. To tide over this difficulty it suffices to transform $\phi''$ slightly to a continuous one in the neighborhood of the discontinuity points of $\phi''$ so that its influence on $\phi$ and $\phi'$ becomes arbitrarily small."
+4_6,Diﬀerentiation,"Show that the maximum of $\left| Q^{(n)}(x) \right|$ over $[-1, 1]$ is equal to $2^n n!$, where
+\[
+Q(x) = (1 - x^2)^n.
+\]","By Cauchy's integral formula we get
+\[
+Q^{(n)}(x) = \frac{n!}{2\pi i} \int_C \frac{(1 - z^2)^n}{(z - x)^{n+1}} \, dz
+\]
+where \(C\) is an oriented circle centered at \(z = x\) with radius \(r > 0\). Hence putting
+\[
+z = x + re^{i\theta}
+\]
+for \(0 \leq \theta < 2\pi\) we obtain
+\[
+Q^{(n)}(x) = \frac{n!}{2\pi} \int_0^{2\pi} \frac{(1 - (x + re^{i\theta})^2)^n}{r^{n+1} e^{(n+1)i\theta}} re^{i\theta} \, d\theta
+= \frac{n!}{2\pi} \int_0^{2\pi} \frac{(1 - (x + re^{i\theta})^2)^n}{re^{i\theta}} \, d\theta.
+\]
+
+The expression in the parentheses can be written as
+\[
+\left( \frac{1 - x^2}{r} - r \right) \cos\theta - 2x - i \left( \frac{1 - x^2}{r} + r \right) \sin\theta.
+\]
+
+We now take \(r = \sqrt{1 - x^2}\) for \(|x| < 1\) so that \(|P^{(n)}(x)| \leq 2^n n!\). This inequality clearly holds for \(x = 1\) and \(x = -1\)."
+4_1,Diﬀerentiation,"Suppose that all roots of the algebraic equation 
+\[
+x^n + a_{n-1} x^{n-1} + \cdots + a_0 = 0
+\]
+have negative real parts and that $f \in C^n(0, \infty)$. Show that if
+\[
+f^{(n)}(x) + a_{n-1} f^{(n-1)}(x) + \cdots + a_0 f(x)
+\]
+converges to $0$ as $x \to \infty$, then $f^{(k)}(x)$ also converges to $0$ as $x \to \infty$ for any $0 \leq k \leq n$.","We first consider the case $n = 1$ and assume that $f(x) \in C^1(0, \infty)$ is a complex-valued function. Suppose that $f'(x) + z f(x)$ converges to $0$ as $x \to \infty$ where $z$ is a complex number with $\Re z > 0$. Differentiating $g(x) = e^{z x} f(x)$ we have 
+\[
+g'(x) = e^{z x} \big(f'(x) + z f(x)\big);
+\]
+therefore $g'(x) e^{-z x}$ converges to $0$ as $x \to \infty$. This means that for any $\epsilon > 0$ there exists an $x_\epsilon$ satisfying $|g'(x)| e^{-z x} < \epsilon$ for any $x$ greater than $x_\epsilon$. Hence 
+\[
+e^{z x} |f(x)| = |g(x)| \leq |g(x_\epsilon)| + \int_{x_\epsilon}^x |g'(t)| dt.
+\]
+Since the last expression is equal to 
+\[
+e^{z x_\epsilon} |f(x_\epsilon)| + \epsilon \int_{x_\epsilon}^x e^{z t} dt,
+\]
+we have 
+\[
+|f(x)| \leq e^{z(x_\epsilon - x)} |f(x_\epsilon)| + \frac{\epsilon}{\Re z} e^{z x}.
+\]
+Thus $|f(x)| < 2\epsilon / \Re z$ for all sufficiently large $x$.
+
+We prove the $n+1$ case by assuming the $n$ case. Let $-\xi$ be a root of 
+\[
+x^{n+1} + a_n x^n + \cdots + a_0 = 0
+\]
+with $\Re \xi > 0$. Since this polynomial is written as 
+\[
+(x + \xi)\big(x^n + b_{n-1}x^{n-1} + \cdots + b_0\big),
+\]
+we get 
+\[
+f^{(n+1)}(x) + a_n f^{(n)}(x) + \cdots + a_0 f(x) = \phi'(x) + \xi \phi(x)
+\]
+where 
+\[
+\phi(x) = f^{(n)}(x) + b_{n-1}f^{(n-1)}(x) + \cdots + b_0 f(x).
+\]
+By the hypothesis $\phi(x)$ converges to $0$ and hence so does $f^{(k)}(x)$ as $x \to \infty$ for each integer $0 \leq k \leq n$. Clearly $f^{(n+1)}(x)$ converges to $0$ as well."
+4_9,Diﬀerentiation,"Suppose that $f \in C^2(0, \infty)$ converges to $\alpha$ as $x \to \infty$ and that 
+\[
+f''(x) + \lambda f'(x)
+\]
+is bounded above for some constant $\lambda$. Then show that $f'(x)$ converges to $0$ as $x \to \infty$.","The proof is substantially due to Hardy and Littlewood (1914). We use Taylor’s formula with the integral remainder term
+\[
+f(x+y) = f(x) + yf'(x) + y^2 \int_0^1 (1-t)f''(x+yt) dt,
+\]
+valid for any \(x > 1\) and \(|y| < 1\). Now let us consider the integral on the right-hand side with \(f''\) replaced by \(f'\). By the mean value theorem there is a \(\xi_{x,y}\) between \(0\) and \(y\) satisfying
+\[
+y^2 \int_0^1 (1-t)f'(x+yt) dt = \int_x^{x+y} f(s) ds - yf(x) = y f(x+\xi_{x,y}) - y f(x).
+\]
+Since there exists a positive constant \(K\) satisfying \(f''(x) + \lambda f'(x) \leq K\), we have
+\[
+f(x+y) - f(x) - y f'(x) + \lambda y f(x+\xi_{x,y}) - \lambda y f(x) = y^2 \int_0^1 (1-t) (f''(x+yt) + \lambda f'(x+yt)) dt \leq Ky^2 \int_0^1 (1-t) dt = \frac{K}{2}y^2.
+\]
+
+For the case in which \(0 < y < 1\) we get
+\[
+f'(x) \geq \frac{f(x+y) - f(x)}{y} + \lambda f(x+\xi_{x,y}) - \lambda f(x) - \frac{K}{2}y.
+\]
+Making \(x \to \infty\) we thus have
+\[
+\liminf_{x \to \infty} f'(x) \geq -\frac{K}{2}y.
+\]
+Therefore \(\liminf_{x \to \infty} f'(x)\) must be \(\geq 0\) because \(y\) is arbitrary.
+
+Similarly, for the case in which \(-1 < y < 0\),
+\[
+f'(x) \leq \frac{f(x) - f(x-|y|)}{|y|} + \lambda f(x+\xi_{x,y}) - \lambda f(x) + \frac{K}{2}|y|,
+\]
+which implies that
+\[
+\limsup_{x \to \infty} f'(x) \leq \frac{K}{2}|y|.
+\]
+So that \(\limsup_{x \to \infty} f'(x)\) is \(\leq 0\) because \(y\) is arbitrary. Therefore \(f'(x)\) converges to \(0\) as \(x \to \infty\)."
+5_6,Integration,"Show that the minimum of the integral
+\[
+\int_0^1 \left| x^n + a_1 x^{n-1} + \cdots + a_n \right| dx
+\]
+as \( a_1, a_2, \ldots, a_n \) range over all real numbers, is equal to \( 4^{-n} \).","For a given polynomial
+\[
+A(x) = x^n + a_1 x^{n-1} + \cdots + a_n
+\]
+we define
+\[
+B(x) = A\left(\frac{x+2}{4}\right),
+\]
+so that
+\[
+B(x) = \frac{x^n}{4^n} + a_1' x^{n-1} + \cdots + a_n'
+\]
+with some real numbers $a_1', \ldots, a_n'$. Putting further
+\[
+Q(x) = \int_0^x B(s) \, ds
+\]
+we obtain
+\[
+Q(x) = \frac{x^{n+1}}{4^n (n+1)} + a_1'' x^n + \cdots + a_n'' x
+\]
+with some real numbers $a_1'', \ldots, a_n''$. Applying the same method as in the proof of \textbf{Problem 3.2} to $Q(x)$ with the same notations, we get
+\[
+\frac{4(n+1)}{4^n (n+1)} \sum_{k=0}^{n+1} (-1)^k Q(\alpha_k) \leq \sum_{k=0}^n |Q(\alpha_k) - Q(\alpha_{k+1})| \tag{5.6}
+\]
+where
+\[
+\alpha_k = 2 \cos \frac{k \pi}{n+1}.
+\]
+Therefore, by using (5.4) and (5.5) in (5.6),
+\[
+\frac{1}{4^{n-1}} \leq \sum_{k=0}^n \int_{\alpha_{k+1}}^{\alpha_k} |B(s)| \, ds = \int_{-2}^2 |B(s)| \, ds = 4 \int_0^1 |A(x)| \, dx.
+\]"
+5_1,Integration,"Suppose that \(f \in C[0,1]\) and \(g \in C(\mathbb{R})\) is a periodic function with period 1. Show then that
+\[
+\lim_{n \to \infty} \int_0^1 f(x) g(nx) \, dx = \int_0^1 f(x) \, dx \int_0^1 g(x) \, dx.
+\]","Without loss of generality we can replace \( g(x) \) by \( g(x) + c \) for any constant \( c \); so we can assume that \( g(x) \) is positive. By the periodicity of \( g \)
+\[
+\int_0^1 f(x) g(nx) \, dx = \frac{1}{n} \int_0^n f\left(\frac{y}{n}\right) g(y) \, dy
+= \frac{1}{n} \sum_{k=0}^{n-1} \int_k^{k+1} f\left(\frac{y}{n}\right) g(y) \, dy
+= \frac{1}{n} \sum_{k=0}^{n-1} \int_0^1 f\left(\frac{k+s}{n}\right) g(s) \, ds.
+\]
+
+Applying the first mean value theorem to each integral on the right-hand side, the above expression can be written as the product of \( \int_0^1 g(s) \, ds \) times
+\[
+\frac{1}{n} \sum_{k=0}^{n-1} f\left(\frac{k+s_k}{n}\right)
+\]
+for some \( s_k \) in the interval \( (0, 1) \), which is the Riemann sum converging to \( \int_0^1 f(x) \, dx \) as \( n \to \infty \)."
+5_8_c,Integration,"Put \( \phi(x) = 1 / \sqrt{1 + |x|} \) and \( \alpha_{j,n} = (j - 1/2)3^{-n} \) for \( 1 \leq j \leq 3^n, n \geq 0 \).
+Using the function \( \Psi \), construct an example of everywhere differentiable but nowhere monotone functions.","Finally we construct an example of everywhere differentiable but nowhere monotone functions. Let
+\[
+f(x) = \Psi(x) - \Psi\left(x - \frac{1}{6}\right)
+\]
+for \( \frac{1}{6} < x < 1 \). Since \( \alpha_{j,n} - \frac{1}{6} = \beta_{k,n} \) for any \( k = j - \frac{3^{n-1} + 1}{2} \geq 0 \), we have
+\[
+f'(\alpha_{j,n}) = \Phi(\alpha_{j,n}) - \Phi(\beta_{k,n}) > 0.
+\]
+Similarly, since \( \beta_{k,n} - \frac{1}{6} = \alpha_{j,n} \) for any \( j = k - \frac{3^{n-1} - 1}{2} \geq 1 \), we get
+\[
+f'(\beta_{k,n}) = \Phi(\beta_{k,n}) - \Phi(\alpha_{j,n}) < 0.
+\]
+Thus, \( A \) and \( B \) being dense subsets of \( [0,1] \), \( f(x) \) is nowhere monotone.
+"
+5_9,Integration,"Prove that
+\[
+\sum_{n=1}^m \frac{\sin n\theta}{n} < \int_0^\pi \frac{\sin x}{x} \, dx = 1.8519\ldots
+\]
+for any positive integer \( m \) and any \( \theta \) in \( [0, \pi] \). Show moreover that the constant on the right-hand side cannot be replaced by any smaller number.","As is already seen in \textbf{Solution 1.7}, the maximal values in the interval \([0, \pi]\) of the function
+\[
+S_m(\theta) = \sin \theta + \frac{\sin 2\theta}{2} + \cdots + \frac{\sin m\theta}{m}
+\]
+are attained at \([(m+1)/2]\) points: \(\pi/(m+1), 3\pi/(m+1), \ldots\). Since
+\[
+S'_m(\theta) = \frac{1}{2} \sin 2(m+1)\theta \cot \theta - \cos^2(2(m+1)\theta),
+\]
+we get
+\[
+S_m(\beta) - S_m(\alpha) \leq \int_{\alpha/2}^{\beta/2} \sin 2(m+1)\theta \cot \theta \, d\theta
+\]
+for any \(0 < \alpha < \beta < \pi\). By the substitution \(s = 2(m+1)\theta - 2\ell\pi\) with
+\[
+\alpha = \frac{2\ell - 1}{m+1}\pi \quad \text{and} \quad \beta = \frac{2\ell + 1}{m+1}\pi,
+\]
+the above integral on the right-hand side can be written as
+\[
+\frac{1}{2(m+1)} \int_0^\pi \sin s \left( \cot \frac{2\ell\pi + s}{2(m+1)} - \cot \frac{2\ell\pi - s}{2(m+1)} \right) ds.
+\]
+Since the function \(\cot s\) is strictly monotone decreasing in the interval \((0, \pi/2)\), this integral is clearly negative. This implies that the maximum of \(S_m(\theta)\) on the interval \([0, \pi]\) is attained at \(\theta = \pi/(m+1)\). Moreover, we have
+\[
+S_{m+1}\left(\frac{\pi}{m+2}\right) > S_{m+1}\left(\frac{\pi}{m+1}\right) = S_m\left(\frac{\pi}{m+1}\right).
+\]
+Therefore \(\{S_m(\pi/(m+1))\}\) is a strictly monotone increasing sequence and
+\[
+S_m\left(\frac{\pi}{m+1}\right) = \frac{\pi}{m+1} \sum_{n=1}^{m+1} \frac{m+1}{n\pi} \sin \frac{n\pi}{m+1}
+\]
+converges to the integral
+\[
+\int_0^\pi \frac{\sin x}{x} dx \quad \text{as } m \to \infty.
+\]"
+5_3,Integration,"Show that
+\[
+\max_{0 \leq x \leq 1} |f'(x)| \geq 4 \int_0^1 |f(x)| \, dx
+\]
+for any \(f \in C^1[0, 1]\) satisfying \(f(0) = f(1) = 0\). Prove moreover that 4 cannot be replaced by any larger constant.","\[
+\text{Let } g(x) \text{ be any one of the four functions } f(x), -f(x), f(1-x) \text{ and } -f(1-x).
+\]
+\[
+\text{Let } \alpha \text{ be the maximum of } |g'(x)| \text{ on the interval } [0,1], \text{ which also equals to the maximum of } |f'(x)| \text{ on } [0,1].
+\]
+\[
+\text{We can assume } \alpha > 0; \text{ otherwise, } f(x) \text{ would identically vanish.}
+\]
+\[
+\text{Suppose now that there is a point } x_0 \in (0,1) \text{ satisfying } g(x_0) > \alpha x_0.
+\]
+\[
+\text{By the mean value theorem, there exists } \xi \in (0,x_0) \text{ satisfying } g(\xi) = g'(\xi)x_0 > \alpha x_0.
+\]
+\[
+\text{However, this implies } g'(\xi) > \alpha, \text{ contrary to the definition of } \alpha.
+\]
+\[
+\text{We thus have } g(x) \leq \alpha x \text{ for any } 0 < x < 1 \text{ so that } |f(x)| \leq \alpha \max\{x, 1-x\}.
+\]
+\[
+\text{Hence,}
+\]
+\[
+\int_0^1 |f(x)|dx \leq \alpha \int_0^1 \max\{x, 1-x\}dx = \frac{\alpha}{4}.
+\]
+\[
+\text{The equality does not occur since the function } \max\{x, 1-x\} \text{ is not in } C^1\text{-class.}
+\]
+\[
+\text{However, we can modify it slightly to become a continuously differentiable one in the neighborhood of } x = 1/2
+\]
+\[
+\text{so that the difference between } \int_0^1 |f(x)|dx \text{ and } \alpha/4 \text{ becomes sufficiently small.}
+\]"
+5_2,Integration,"Find an example of a sequence of continuous functions \(\{f_n\}\) defined on the interval \([0, 1]\) such that \(0 \leq f_n(x) \leq 1\),
+\[
+\int_0^1 f_n(x) \, dx \to 0 \quad \text{as } n \to \infty,
+\]
+and that \(\{f_n(x)\}\) does not converge at any point \(x\) in \([0, 1]\).","Divide the unit interval \([0, 1]\) into \(m \geq 3\) equal subintervals. For each subinterval let \(I'\) and \(I''\) be the left and right neighboring subinterval respectively with \(I'\) or \(I''\) empty at endpoints. We associate with \(I\) the trapezoidal function \(g_I(x)\) such that \(g_I(x) = 1\) on \(I\), \(g_I(x) = 0\) on \([0, 1] \setminus (I \cup I' \cup I'')\) and that \(g_I(x)\) is linear on \(I'\) and on \(I''\). We thus have \(m\) continuous functions \(g_I\) for each \(m\). We call \(I\) the support of \(g_I\). Arranging the \(g_I\)'s in a line in any manner for \(m = 3, 4, \dots\) we define a sequence of continuous functions \(\{f_n(x)\}\). It is clear that
+\[
+a_n = \int_0^1 f_n(x) \, dx \leq \frac{2}{m}
+\]
+if \(f_n = g_I\) and the length of \(I\) is equal to \(1/m\). Since \(m \to \infty\) together with \(n\), it follows that \(a_n\) converges to \(0\) as \(n \to \infty\).
+
+For any point \(x\) in \([0, 1]\) there are infinitely many cases in which \(x\) is contained in some support; in other words, \(f_n(x) = 1\) for infinitely many \(n\)'s. On the other hand, there are also infinitely many cases in which \(x\) is contained in neither the support nor its neighbors; in other words, \(f_n(x) = 0\) for infinitely many \(n\)'s. Hence \(\{f_n(x)\}\) does not converge at any point \(x\)."
+6_8,Improper Integrals,"Show that a rational function \( R(x) \) satisfies
+\[
+\int_{-\infty}^\infty f(R(x)) \, dx = \int_{-\infty}^\infty f(x) \, dx
+\]
+for all piecewise continuous functions \( f(x) \) such that \( \int_{-\infty}^\infty f(x) \, dx \) exists, if and only if
+\[
+R(x) = \pm \left( x - \alpha_0 - \sum_{k=1}^m \frac{c_k}{x - \alpha_k} \right)
+\]
+for some non-negative integer \( m \), real constants \( \alpha_0, \alpha_1, \ldots, \alpha_m \) with \( \alpha_1 < \cdots < \alpha_m \), and positive constants \( c_1, \ldots, c_m \).","The proof is based on Szegő (1934).
+
+For any \( \epsilon \) in the interval \( (0, 1) \), we can find a positive constant \( M \) satisfying
+\[
+|R(x) - R(x_0)| \leq |R'(x_0)| \epsilon + M \epsilon^2
+\]
+for any \( |x - x_0| \leq \epsilon \) unless \( x_0 \) is a real pole of \( R(x) \). Let \( f_\epsilon(x) \) be the piecewise continuous function defined by
+\[
+f_\epsilon(x) =
+\begin{cases} 
+1 & \text{if } |x - R(x_0)| \leq |R'(x_0)| \epsilon + M \epsilon^2, \\
+0 & \text{otherwise}.
+\end{cases}
+\]
+
+Then we have
+\[
+2 \epsilon (|R'(x_0)| + M \epsilon) = \int_{-\infty}^\infty f_\epsilon(x) \, dx \geq \int_{x_0-\epsilon}^{x_0+\epsilon} f_\epsilon(R(x)) \, dx = 2 \epsilon;
+\]
+hence, \( \epsilon \) being arbitrary, we have \( |R'(x_0)| \geq 1 \). This means that \( R(x) \) maps each interval divided by real poles of \( R(x) \), say \( \alpha_1 < \alpha_2 < \cdots < \alpha_m \), bijectively on \( \mathbb{R} \). Of course \( m = 0 \) corresponds to the case in which \( R(x) \) has no real poles. The equation \( R(x) = s \) has a unique solution in each interval \( (-\infty, \alpha_1), (\alpha_1, \alpha_2), \ldots, (\alpha_m, \infty) \), say \( x_k(s) \), \( 0 \leq k \leq m \).
+
+Next, let \( g_\epsilon(x) \) be the piecewise continuous function defined by
+\[
+g_\epsilon(x) =
+\begin{cases} 
+1 & \text{if } |x - s| \leq \epsilon, \\
+0 & \text{otherwise}.
+\end{cases}
+\]
+
+We then have
+\[
+2 \epsilon = \int_{-\infty}^\infty g_\epsilon(x) \, dx = \int_{-\infty}^\infty g_\epsilon(R(x)) \, dx, \tag{6.6}
+\]
+where the right-hand side is equal to the sum of lengths of \( m+1 \) intervals satisfying \( |R(x) - s| \leq \epsilon \). Each of these intervals contains exactly one \( x_k(s) \), and the length is
+\[
+\frac{2 \epsilon}{|R'(x_k(s))|} + O(\epsilon^2);
+\]
+so letting \( \epsilon \to 0^+ \) in (6.6), we get
+\[
+\sum_{k=0}^m \frac{1}{|R'(x_k(s))|} = 1. \tag{6.7}
+\]
+In the case $m = 0$ the function $R(x)$ maps $\mathbb{R}$ homeomorphically onto $\mathbb{R}$ and $R'(x_0(s)) = \pm 1$ implies that
+\[
+x_0'(s) = (R^{-1})'(s) = \frac{1}{R'(R^{-1}(s))} = \frac{1}{R'(x_0(s))} = \pm 1.
+\]
+Therefore $R(x) = \pm (x - a_0)$ for some constant $a_0$ for $m = 0$.
+
+We hereafter assume that $m$ is a positive integer. Since $|R'(x_k(s))|$ diverges to $\infty$ as $|s| \to \infty$ for each $1 \leq k \leq m$, it follows from $(6.7)$ that either
+\[
+\begin{cases}
+R'(x) \geq 1 \text{ on } (-\infty, \alpha_1) \cup (\alpha_m, \infty), \\
+\lim_{s \to -\infty} x_0(s) = -\infty, \quad \lim_{s \to -\infty} x_m(s) = \alpha_m, \\
+\lim_{s \to \infty} x_0(s) = \alpha_1, \quad \lim_{s \to \infty} x_m(s) = \infty,
+\end{cases}
+\]
+or
+\[
+\begin{cases}
+R'(x) \leq -1 \text{ on } (-\infty, \alpha_1) \cup (\alpha_m, \infty), \\
+\lim_{s \to -\infty} x_0(s) = \alpha_1, \quad \lim_{s \to -\infty} x_m(s) = \infty, \\
+\lim_{s \to \infty} x_0(s) = -\infty, \quad \lim_{s \to \infty} x_m(s) = \alpha_m,
+\end{cases}
+\]
+holds. They are called the first and the second cases respectively.
+
+The rational function $R(x)$ can now be represented as
+\[
+R(x) = P(x) - \sum_{k,\ell} \frac{c_{k,\ell}}{(x - \alpha_k)^{d_{k,\ell}}} + Q(x),
+\]
+where $P(x)$ is a polynomial of degree $r$ with some positive integer $r$, $c_{k,\ell}$ are non-zero real constants, $d_{k,\ell}$ are positive integers, and $Q(x)$ is a rational function having no real poles and converging to $0$ as $|x| \to \infty$ unless $Q(x)$ vanishes identically. Let $\beta x^r$ be the leading term of $P(x)$ where $\beta$ is a non-zero constant. Since $R'(x) \sim \beta r x^{r-1}$ as $|x| \to \infty$, we must have $r = 1$ and hence $\beta = \pm 1$ by $(6.7)$. Hence $P(x) = \pm (x - a_0)$ for some constant $a_0$.
+
+We first treat the first case. Since $R'(x) = 1 + O(x^{-2})$ as $|x| \to \infty$ in this case, we have
+\[
+\sum_{k=0}^{m-1} \frac{1}{|R'(x_k(s))|} = O(s^{-2}) \quad \text{as } s \to \infty,
+\]
+\[
+\sum_{k=1}^m \frac{1}{|R'(x_k(s))|} = O(s^{-2}) \quad \text{as } s \to -\infty. \tag{6.8}
+\]
+
+Let $d_k^*$ be the largest integer among $d_{k,\ell}$ and $c_k^*$ be the corresponding coefficient $c_{k,\ell}$ for each $0 \leq k \leq m$. Clearly $x_k(s) \to \alpha_k$ either as $s \to \infty$ or $s \to -\infty$ for $1 \leq k \leq m$. Then we have
+\[
+R(x) \sim -\frac{c_k^*}{(x - \alpha_k)^{d_k^*}} \quad \text{as } x \to \alpha_k,
+\]
+and in particular,
+\[
+s = R(x_k(s)) \sim -\frac{c_k^*}{(x_k(s) - \alpha_k)^{d_k^*}},
+\]
+whence solving in $x_k(s) - \alpha_k$ and substituting in
+\[
+R'(x_k(s)) \sim \frac{c_k^* d_k^*}{(x_k(s) - \alpha_k)^{d_k^*+1}} \quad \text{as } x \to \alpha_k,
+\]
+we obtain
+\[
+\frac{1}{|R'(x_k(s))|} \sim \frac{|c_k^*|^{1/d_k^*}}{d_k^*} \cdot \frac{1}{|s|^{1+1/d_k^*}}
+\]
+either as $s \to \infty$ or $s \to -\infty$. Therefore, in view of $(6.8)$, $d_k^* = 1$ and $R(x)$ can be written as
+\[
+R(x) = x - a_0 - \sum_{k=1}^m \frac{c_k}{x - \alpha_k} + Q(x) \tag{6.9}
+\]
+for some real constants $c_k$ in the first case. Since $R(x)$ is monotone increasing on $(\alpha_m, \infty)$ we have $c_m > 0$ and hence all coefficients $c_k$ must be positive; in particular,
+\[
+\sum_{k=0}^m \frac{1}{R'(x_k(s))} = 1. \tag{6.10}
+\]
+
+Differentiating $s = R(x_k(s))$ in $s$ and substituting in $(6.10)$, we get
+\[
+\sum_{k=0}^m x_k'(s) = 1,
+\]
+from which it follows that
+\[
+\sum_{k=0}^m x_k(s) = s + c'. 
+\]
+for some constant $c'$. Since $x_m(s) = s + a_0 + O(s^{-1})$ and $x_k(s) = \alpha_k + O(s^{-1})$ as $s \to \infty$ for each $0 \leq k < m$, we have
+\[
+\sum_{k=0}^m x_k(s) = s + \sum_{k=0}^m \alpha_k. \tag{6.11}
+\]
+
+The rest of the proof is devoted to showing the vanishing of $Q$. It may be interesting to find an easier real-analytic proof of this part.
+
+Suppose, on the contrary, that $Q(x) \not\equiv 0$. Then, in view of $(6.9)$, we can write
+\[
+R(x) = \frac{V(x)}{U(x)} \quad \text{with} \quad U(x) = A(x) \prod_{k=1}^m (x - \alpha_k)
+\]
+where
+\[
+\begin{aligned}
+A(x) &= x^{2p} - c''x^{2p-1} + O(x^{2p-2}), \\
+V(x) &= x^{m+2p+1} - \left(c'' + \sum_{k=0}^m \alpha_k \right)x^{m+2p} + O(x^{m+2p-1})
+\end{aligned}
+\]
+are polynomials with real coefficients for some positive integer $p$ and some constant $c''$. We can assume that $U(x)$ and $V(x)$ are relatively prime; that is, they have no common factor except for constants. Let $w_1, w_1', \ldots, w_p, w_p'$ be non-real zeros of $A(z)$. The algebraic equation
+\[
+V(z) = sU(z)
+\]
+has exactly $m + 1$ real simple roots $x_0(s), \ldots, x_m(s)$ and $2p$ non-real roots $z_1(s), \ldots, z_p(s), z_1'(s), \ldots, z_p'(s)$ counting with multiplicity for any real number $s$. Then we have from $(6.11)$
+\[
+\frac{z_1(s) + z_1'(s) + \cdots + z_p(s) + z_p'(s)}{s} = c''.
+\]
+
+Let $C$ be a circle enclosing all the zeros of $U(z)$. Take a sufficiently large $s$ such that
+\[
+s \min_{z \in C} |U(z)| > \max_{z \in C} |V(z)|
+\]
+and that $x_m(s)$ lies outside of $C$. Since $|V(z)| < s|U(z)|$ on $C$, it follows from Rouché's theorem that $V(z) = sU(z)$ has exactly $m + 2p$ roots inside of $C$, which are of course $x_1(s), \ldots, x_m(s)$ and $z_1(s), \ldots, z_p(s), z_1'(s), \ldots, z_p'(s)$. This implies that all the non-real roots are bounded as $s \to \infty$.
+\[
+V(z) - sU(z) \text{ is irreducible as a polynomial of two variables; that is, it cannot be expressed as the product of two polynomials none of which is constant.}
+\]
+We then consider \( x_k(s) \) and \( z_k(s) \) as function elements of the algebraic function uniquely determined by \( V(z) - sU(z) = 0 \). Since all solutions of \( V(z) - sU(z) = 0 \) are branches of the same algebraic function, it follows in particular that \( x_m(s) \) can be continued to \( z_1(s) \) along an arc on the Riemann surface of this algebraic function. This is a contradiction, since the relation \( (6.12) \) holds globally except for possible isolated singularities and since \( x_m(s) \) is a unique solution which is unbounded as \( s \to \infty \). Therefore \( p = 0 \) and hence \( Q(x) \) must vanish identically, completing the proof of the first part.
+
+\textbf{The similar argument can be applied to the second case.}
+
+Conversely, let
+\[
+R(x) = \pm \left( x - a_0 - \sum_{k=1}^m \frac{c_k}{x - \alpha_k} \right)
+\]
+for some real numbers \( a_0, \ldots, \alpha_m \) with \( \alpha_1 < \cdots < \alpha_m \) and some positive constants \( c_1, \ldots, c_m \). Then it is clear that \( \sum_{k=0}^m x_k'(s) = \pm 1 \) and hence
+\[
+\int_{-\infty}^\infty f(R(x)) dx = \int_{-\infty}^{\alpha_1} + \cdots + \int_{\alpha_m}^\infty f(R(x)) dx
+\]
+\[
+= \pm \sum_{k=0}^m \int_{-\infty}^\infty f(s) x_k'(s) ds,
+\]
+which is equal to
+\[
+\int_{-\infty}^\infty f(x) dx. \quad \Box
+\]
+"
+6_2,Improper Integrals,"Show that
+\[
+\lim_{n \to \infty} \sqrt{n} \int_{-\infty}^\infty \frac{dx}{(1 + x^2)^n} = \sqrt{\pi}.
+\]","We divide \( (-\infty, \infty) \) into three parts as
+\[
+(-\infty, -n^{-1/3}) \cup [-n^{-1/3}, n^{-1/3}] \cup (n^{-1/3}, \infty),
+\]
+which we denote by \( A_1, A_2, A_3 \) respectively. For \( k = 1, 2, 3 \) put
+\[
+I_k = \sqrt{n} \int_{A_k} \frac{dx}{(1 + x^2)^n}.
+\]
+
+By the substitution \( t = \sqrt{n} x \) we have
+\[
+I_2 = \sqrt{n} \int_{A_2} \exp\left(-n \log \left(1 + x^2\right)\right) dx
+= \int_{-n^{1/6}}^{n^{1/6}} \exp\left(-n \log \left(1 + \frac{t^2}{n}\right)\right) dt.
+\]
+
+Since
+\[
+n \log \left(1 + \frac{t^2}{n}\right) = t^2 + O\left(\frac{1}{n^{1/3}}\right)
+\]
+uniformly in \( |t| \leq n^{1/6} \), we obtain
+\[
+I_2 = \left(1 + O\left(\frac{1}{n^{1/3}}\right)\right) \left(\sqrt{\pi} - \int_{-\infty}^{-n^{1/6}} e^{-t^2} dt - \int_{n^{1/6}}^{\infty} e^{-t^2} dt\right)
+= \sqrt{\pi} + O\left(\frac{1}{n^{1/3}}\right)
+\]
+as \( n \to \infty \). On the other hand, it follows that
+\[
+0 < I_1 + I_3 < \frac{\sqrt{n}}{(1 + n^{-2/3})^{n-1}} \int_{-\infty}^\infty \frac{dx}{1 + x^2}
+\]
+and the right-hand side converges to 0 as \( n \to \infty \)."
+6_6,Improper Integrals,"Suppose that \( f \in C(\mathbb{R}) \) and that \( \int_{-\infty}^\infty |f(x)| \, dx \) converges. Show then that
+\[
+\lim_{n \to \infty} \int_{-\infty}^\infty f(x) |\sin nx| \, dx = \frac{2}{\pi} \int_{-\infty}^\infty f(x) \, dx.
+\]","For any \( \epsilon > 0 \), we can take a sufficiently large number \( L \) satisfying
+\[
+\int_{-\infty}^{-L\pi} |f(x)| dx + \int_{L\pi}^\infty |f(x)| dx < \epsilon. \tag{6.4}
+\]
+On the other hand,
+\[
+\int_{-L\pi}^{L\pi} |f(x)| \sin nx| dx = \pi \int_{-L}^L f(\pi t) |\sin n\pi t| dt
+= \pi \sum_{k=-L}^{L-1} \int_0^1 f(\pi s + k\pi) |\sin n\pi s| ds.
+\]
+Applying the result in \textbf{Problem 5.1}, the right-hand side converges to
+\[
+\pi \sum_{k=-L}^{L-1} \int_0^1 f(\pi s + k\pi) ds \int_0^1 \sin n\pi s ds
+\]
+as \( n \to \infty \), which is
+\[
+\frac{2}{\pi} \int_{-L\pi}^{L\pi} f(t) dt.
+\]
+Whence
+\[
+\int_{-L\pi}^{L\pi} f(x)|\sin nx| dx \to \frac{2}{\pi} \int_{-L\pi}^{L\pi} f(t) dt \quad (n \to \infty). \tag{6.5}
+\]
+Therefore, by (6.4) and (6.5), we have
+\[
+\limsup_{n \to \infty} \left| \int_{-\infty}^\infty f(x)|\sin nx| dx - \frac{2}{\pi} \int_{-\infty}^\infty f(t) dt \right| \leq 2\epsilon.
+\]
+Since \( \epsilon \) is arbitrary, this completes the proof."
+6_1,Improper Integrals,"Show that
+\[
+\int_0^1 x^{-x} dx = \frac{1}{1^1} + \frac{1}{2^2} + \frac{1}{3^3} + \cdots + \frac{1}{n^n} + \cdots.
+\]","We have
+\[
+\int_0^1 x^{-x} \, dx = \int_0^1 e^{-x \log x} \, dx = \sum_{n=0}^\infty \frac{(-1)^n}{n!} \int_0^1 x^n \log^n x \, dx,
+\]
+where the termwise integration is allowed since the series
+\[
+\sum_{n=0}^\infty \frac{(-1)^n}{n!} x^n \log^n x
+\]
+converges uniformly on the interval \( (0, 1] \). Also, by the substitution \( x = e^{-s} \), we get
+\[
+\int_0^1 x^n \log^n x \, dx = (-1)^n \int_0^\infty e^{-(n+1)s} s^n \, ds = (-1)^n \frac{n!}{n^{n}},
+\]
+from the definition of the Gamma function.
+"
+6_9,Improper Integrals,"Show that
+\[
+\gamma = \int_0^1 \frac{1 - \cos x}{x} \, dx - \int_1^\infty \frac{\cos x}{x} \, dx,
+\]
+where \( \gamma \) is Euler's constant.","The proof is essentially due to Gronwall (1918). Put
+\[
+c_n = \int_0^{n\pi} \frac{1 - \cos x}{x} dx - \log(n\pi)
+\]
+for any positive integer $n$. Then obviously
+\[
+c_n = \int_0^1 \frac{1 - \cos x}{x} dx - \int_1^{n\pi} \frac{\cos x}{x} dx,
+\]
+and we are to show that $c_n$ converges to Euler's constant $\gamma$ as $n \to \infty$.
+
+By the substitution $x = 2n\pi s$ we have
+\[
+\int_0^{n\pi} \frac{1 - \cos x}{x} dx = \int_0^{1/2} \frac{1 - \cos 2n\pi s}{s} ds,
+\]
+which is equal to
+\[
+\pi \int_0^{1/2} \frac{1 - \cos 2n\pi s}{\sin \pi s} ds + \int_0^{1/2} \phi(s) ds - \int_0^{1/2} \phi(s) \cos 2n\pi s \, ds, \tag{6.13}
+\]
+where
+\[
+\phi(s) = \frac{1}{s} - \frac{\pi}{\sin \pi s}
+\]
+is a continuous function on the interval $[0, 1/2]$ if we define $\phi(0) = 0$. Hence by the remark after \textbf{Problem 5.1} the third integral in (6.13) converges to $0$ as $n \to \infty$. The second integral in (6.13) is equal to
+\[
+\left[ \log \frac{s}{\tan(\pi s / 2)} \right]_{s=0^+}^{s=1/2} = \log \pi - 2 \log 2.
+\]
+Finally, since it is easily verified that
+\[
+\frac{1 - \cos 2n\pi s}{\sin \pi s} = 2 \sum_{k=1}^n \sin(2k-1)\pi s,
+\]
+the first integral in (6.13) is equal to
+\[
+2\pi \sum_{k=1}^n \int_0^{1/2} \sin(2k-1)\pi s \, ds = \sum_{k=1}^n \frac{2}{2k-1},
+\]
+which is $\log n + 2 \log 2 + \gamma + o(1)$ as $n \to \infty$. Thus we obtain $c_n = \gamma + o(1)$, which completes the proof."
+7_11,Series of Functions,"Suppose that \( f \in C^1(0,1) \) and \( \int_0^1 |f(x)| dx \) converges. Show that the Fourier series
+\[
+\frac{a_0}{2} + \sum_{n=1}^\infty \left( a_n \cos 2n\pi x + b_n \sin 2n\pi x \right)
+\]
+converges to \( f(x) \) in the interval \( (0,1) \).","For an arbitrary fixed $x \in (0, 1)$, let $s_n(x)$ be the $n$th partial sum of the Fourier series. Then we have
+\[
+s_n(x) = \frac{a_0}{2} + \sum_{k=1}^n \left(a_k \cos 2k\pi x + b_k \sin 2k\pi x\right)
+= \int_0^1 f(t) \left(1 + 2 \sum_{k=1}^n \cos 2k\pi(t-x) \right) dt.
+\]
+
+Now, as we have already seen in \textbf{Solution 7.10}, the trigonometric sum in the big parentheses can be expressed in the ratio of sines; hence we obtain
+\[
+s_n(x) = \int_{-x}^{1-x} f(x+y) \frac{\sin (2n+1)\pi y}{\sin \pi y} \, dy.
+\]
+
+If $f(x) = 1$, then obviously $a_0 = 1$ and $a_n = b_n = 0$ for all $n \geq 1$; hence
+\[
+1 = \int_{-x}^{1-x} \frac{\sin (2n+1)\pi y}{\sin \pi y} \, dy.
+\]
+
+Therefore, we have
+\[
+s_n(x) - f(x) = \int_{-x}^{1-x} \varphi_x(y) \sin (2n+1)\pi y \, dy,
+\]
+where
+\[
+\varphi_x(y) = \frac{f(x+y) - f(x)}{\sin \pi y}.
+\]
+
+Clearly, $\varphi_x \in C(-x, 1-x)$ and the improper integral
+\[
+\int_{-x}^{1-x} |\varphi_x(y)| \, dy
+\]
+converges, since $f \in C^1(0, 1)$ and $\int_0^1 |f(x)| dx$ converges. Thus it follows from the remark after \textbf{Solution 5.1} that
+\[
+\lim_{n \to \infty} s_n(x) = f(x),
+\]
+in view of
+\[
+\int_{-x}^{1-x} \sin 2\pi y \, dy = \int_{-x}^{1-x} \cos 2\pi y \, dy = 0.
+\]"
+7_10,Series of Functions,"Show that the trigonometric series
+\[
+\sum_{n=1}^\infty \frac{\sin n\theta}{n}
+\]
+converges uniformly to
+\[
+\frac{\pi - \theta}{2}
+\]
+on the interval $[\delta, 2\pi - \delta]$ for any $\delta > 0$.","The uniform convergence on any interval $[\delta, 2\pi - \delta]$ with $\delta > 0$ can be easily derived from Dirichlet's test (See Item 2 on p. 93). Thus it suffices to show that the limit function is $(\pi - \theta)/2$.
+
+Put $\theta = 2\vartheta$ for brevity. Integrating the formula
+\[
+\frac{1}{2} + \sum_{n=1}^m \frac{\sin n\omega}{n} = \frac{\sin (2m+1)\vartheta}{2\sin \vartheta}
+\]
+from $0$ to $\omega \in [\delta, 2\pi - \delta]$, we obtain
+\[
+\frac{\omega}{2} + \sum_{n=1}^m \frac{\sin n\omega}{n} = \int_0^\omega \frac{\sin (2m+1)\vartheta}{\sin \vartheta} \, d\vartheta
+= \int_0^\eta \frac{\sin (2m+1)\vartheta}{\sin \vartheta} \, d\vartheta,
+\]
+where $\omega = 2\eta$. We divide the last integral into two parts,
+\[
+\int_0^\eta \frac{\sin (2m+1)t}{t} \, dt + \int_0^\eta \phi(t) \sin (2m+1)t \, dt
+\]
+and call them $I_m(\eta)$ and $J_m(\eta)$ respectively, where
+\[
+\phi(t) = \frac{1}{\sin t} - \frac{1}{t}.
+\]
+
+Note that $\phi \in C^1(-\pi, \pi)$ if we define $\phi(0) = 0$.
+
+Integrating by parts we get
+\[
+J_m(\eta) = -\frac{\phi(\eta)}{2m+1} \cos (2m+1)\eta + \frac{1}{2m+1} \int_0^\eta \phi'(t)\cos (2m+1)t \, dt,
+\]
+from which it is easily seen that
+\[
+|J_m(\eta)| < \frac{M_0 + \pi M_1}{2m+1},
+\]
+where $M_0$ and $M_1$ are the maxima of $|\phi|$ and $|\phi'|$ on the interval $[0, \pi - \delta/2]$ respectively. Thus $J_m(\eta)$ converges uniformly to $0$ as $m \to \infty$ on $[0, \pi - \delta/2]$.
+
+We next deal with the integral $I_m(\eta)$. By the substitution $s = (2m+1)t$, we have
+\[
+I_m(\eta) = \int_0^{(2m+1)\eta} \frac{\sin s}{s} \, ds.
+\]
+Since $\frac{\pi}{2} = I_m(\pi/2) + J_m(\pi/2)$, we have for any $x > \pi$
+\[
+\left| \frac{\pi}{2} - \int_0^x \frac{\sin s}{s} \, ds \right| \leq \left| J_m\left(\frac{\pi}{2}\right) \right| + \int_{(2m+1)\pi/2}^x \frac{ds}{s},
+\]
+where $m_x$ is the largest integer satisfying $(2m+1)\pi \leq 2x$. Since the right-hand side converges to $0$ as $x \to \infty$, the improper integral
+\[
+\int_0^\infty \frac{\sin s}{s} \, ds
+\]
+exists and equals to $\pi/2$. Therefore
+\[
+\left| \frac{\omega}{2} + \sum_{n=1}^m \frac{\sin n\omega}{n} \right| \leq \left| J_m(\eta) \right| + \left| I_m(\eta) - \frac{\pi}{2} \right|
+= \left| J_m(\eta) \right| + \left| \int_{(2m+1)\eta}^\infty \frac{\sin s}{s} \, ds \right|.
+\]
+The right-hand side clearly converges to $0$ uniformly in $\eta \in [\delta/2, \pi - \delta/2]$ as $m \to \infty$."
+7_1,Series of Functions,"Show that
+\[
+\lim_{x \to 1^-} \sqrt{1-x} \sum_{n=1}^\infty x^{n^2} = \frac{\sqrt{\pi}}{2}.
+\]","Applying \textbf{Problem 6.4} for \( f(x) = e^{-x^2} \), we have
+\[
+h \sum_{n=0}^\infty \exp(-n^2 h^2) \to \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+\]
+as \( h \to 0^+ \). By the substitution \( h = \sqrt{-\log x} \), it follows that \( h \) converges to \( 0^+ \) if and only if \( x \) converges to \( 1^- \); hence, using \( -\log x \sim 1 - x \) as \( x \to 1^- \), we obtain
+\[
+\lim_{x \to 1^-} \sqrt{1 - x} \sum_{n=0}^\infty x^{n^2}
+= \lim_{x \to 1^-} \sqrt{-\log x} \sum_{n=0}^\infty x^{n^2}
+= \lim_{h \to 0^+} h \sum_{n=0}^\infty \exp(-n^2 h^2) = \frac{\sqrt{\pi}}{2}.
+\]"
+7_9,Series of Functions,"Let $\{a_n\}$ be a monotone decreasing sequence converging to $0$. Show that the trigonometric series
+\[
+\sum_{n=1}^\infty a_n \sin n\theta
+\]
+converges uniformly on $\mathbb{R}$ if and only if $n a_n$ converges to $0$ as $n \to \infty$.","Suppose first that the given series converges uniformly on $\mathbb{R}$. For any $\epsilon > 0$, we can take a positive integer $N$ such that 
+\[
+\max_{\theta \in \mathbb{R}} \left| a_p \sin p \theta + a_{p+1} \sin (p+1)\theta + \cdots + a_q \sin q \theta \right| < \epsilon
+\]
+for any integers $q > p$ greater than $N$. We now choose $\theta = \pi/(4p)$ and $q = 2p$ so that $a_k \sin k \theta \geq 0$ for $p \leq k \leq 2p$. Then we have 
+\[
+\epsilon > \sum_{n=p}^{2p} a_n \sin \frac{n \pi}{4p} \geq \frac{1}{\sqrt{2}} \sum_{n=p}^{2p} a_n \geq \frac{p+1}{\sqrt{2}} a_{2p}.
+\]
+Hence 
+\[
+\max \{ 2p a_{2p}, (2p+1)a_{2p+1} \} \leq 2(p+1)a_{2p} < 2 \sqrt{2} \epsilon,
+\]
+and so $n a_n \to 0$ as $n \to \infty$.
+
+Conversely, assume that $n a_n$ converges to $0$ as $n \to \infty$. For any $\epsilon > 0$, we can take a positive integer $N$ so that $n a_n < \epsilon$ for any integer $n$ greater than $N$. For any $\theta \in (0, \pi]$, let $m_\theta$ be a unique positive integer satisfying $\pi/(m+1) < \theta \leq \pi/m$. For any integers $q > p$ greater than $N$, let $S_0(\theta)$ and $S_1(\theta)$ be the sums of $a_n \sin n \theta$ from $n = p$ to $r$ and from $n = r+1$ to $q$ respectively, where 
+\[
+r = \min \{ q, p+m_\theta - 1 \}.
+\]
+
+For the sum $S_0(\theta)$, we use an almost trivial estimate $\sin x < x$ for $x > 0$ to obtain
+\[
+|S_0(\theta)| \leq \theta \sum_{n=p}^r n a_n < \theta m_\theta \epsilon \leq \pi \epsilon.
+\]
+
+Next, for the sum $S_1(\theta)$, we can assume $q \geq p + m_\theta$, so $r = p+m_\theta - 1$. By partial summation, we have 
+\[
+|S_1(\theta)| = \left| \sum_{n=r+1}^q a_n (\sigma_n - \sigma_{n-1}) \right| \leq a_{r+1}|\sigma_r| + a_q |\sigma_q| + (a_{r+1} - a_q) \max_{r < k < q} |\sigma_k|,
+\]
+where 
+\[
+\sigma_n = \sin \theta + \sin 2\theta + \cdots + \sin n\theta.
+\]
+
+Using Jordan's inequality $\pi \sin x \geq 2x$ valid on the interval $[0, \pi/2]$, we get 
+\[
+|\sigma_n| = \left| \frac{\cos \vartheta - \cos(2n+1)\vartheta}{\sin \vartheta} \right| \leq \frac{2}{\sin \vartheta} \leq \frac{\pi}{\vartheta} < m_\theta + 1,
+\]
+where $\theta = 2\vartheta$; therefore
+\[
+|S_1(\theta)| \leq (m_\theta + 1)(a_{r+1} + a_q + a_{r+1} - a_q) \leq 2(r+1)a_{r+1} < 2\epsilon.
+\]
+
+We then have 
+\[
+\left| \sum_{n=p}^q a_n \sin n \theta \right| \leq |S_0(\theta)| + |S_1(\theta)| < (\pi + 2)\epsilon,
+\]
+which holds uniformly on the interval $[0, \pi]$; whence on $\mathbb{R}$ by symmetry and periodicity.
+"
+7_6,Series of Functions,"Suppose that a power series 
+\[
+f(x) = \sum_{n=0}^\infty a_n x^n
+\]
+has the radius of convergence $1$, all $a_n$ are non-negative, and that $(1 - x)f(x)$ converges to $1$ as $x \to 1^-$. Show then that
+\[
+\lim_{n \to \infty} \frac{a_0 + a_1 + a_2 + \cdots + a_n}{n} = 1.
+\]","It follows from the assumption that 
+\[
+(1 - x) \sum_{n=0}^\infty a_n x^{(k+1)n} = \frac{1}{1+x+\cdots+x^k}(1-x^{k+1}) \sum_{n=0}^\infty a_n \left(x^{k+1}\right)^n
+\]
+converges to 
+\[
+\frac{1}{k+1} = \int_0^1 t^k dt
+\]
+as $x \to 1^-$ for any non-negative integer $k$. Therefore we have 
+\[
+\lim_{x \to 1^-} (1 - x) \sum_{n=0}^\infty a_n x^n P(x^n) = \int_0^1 P(t) \, dt
+\]
+for any polynomial $P(t)$. 
+
+We now introduce the discontinuous function $\phi(x)$ defined by 
+\[
+\phi(x) = 
+\begin{cases} 
+0 & \text{for } 0 \leq x < 1/e, \\
+1/x & \text{for } 1/e \leq x \leq 1.
+\end{cases}
+\]
+For any $\epsilon > 0$ we can find two continuous functions $\phi_\pm(x)$ defined on the interval $[0, 1]$ such that $\phi_-(x) \leq \phi(x) \leq \phi_+(x)$ and $\phi_+(x) - \phi_-(x) < \epsilon$ for any $x$ in $[0, 1]$. By Weierstrass' approximation theorem there are polynomials $P_\pm(x)$ satisfying $\lvert \phi_\pm(x) \pm \epsilon - P_\pm(x) \rvert < \epsilon$, respectively. Hence it follows that $P_-(x) < \phi(x) < P_+(x)$ and $P_+(x) - P_-(x) < 5\epsilon$.
+
+Since $a_n$ are all non-negative, we obtain
+\[
+\sum_{n=0}^\infty a_n x^n P_-(x^n) \leq \sum_{n=0}^\infty a_n x^n \phi(x^n) \leq \sum_{n=0}^\infty a_n x^n P_+(x^n)
+\]
+for any $0 < x < 1$. If we put $x = e^{-1/N}$, then $x \to 1^-$ if and only if $N \to \infty$; hence, using $1 - e^{-1/N} \sim 1/N$, we have 
+\[
+\int_0^1 P_-(t) \, dt \leq \liminf_{N \to \infty} \frac{1}{N} \sum_{n=0}^N a_n
+\]
+and 
+\[
+\limsup_{N \to \infty} \frac{1}{N} \sum_{n=0}^N a_n \leq \int_0^1 P_+(t) \, dt.
+\]
+Therefore, since $P_+(x) - P_-(x) < 5\epsilon$ and 
+\[
+\int_0^1 \phi(x) dx = \int_{1/e}^1 \frac{dx}{x} = 1,
+\]
+it follows that 
+\[
+1 < \int_0^1 P_+(t) \, dt < \int_0^1 P_-(t) \, dt + 5\epsilon < 1 + 5\epsilon.
+\]
+Hence the sequence 
+\[
+\frac{1}{N} \sum_{n=0}^N a_n
+\]
+converges to $1$ as $N \to \infty$. 
+"
+7_3,Series of Functions,"Suppose that a power series
+\[
+f(x) = \sum_{n=0}^\infty a_n x^n
+\]
+has the radius of convergence $\rho > 0$ and that $\sum_{n=0}^\infty a_n \rho^n$ converges to $\alpha$. Show that $f(x)$ converges to $\alpha$ as $x \to \rho^-$.","Replacing \( x \) by \( \rho x \), we can assume that \( \rho = 1 \) without loss of generality. Put
+\[
+s_n = a_0 + a_1 + \cdots + a_n.
+\]
+Since \( s_n \) converges to \( \alpha \) as \( n \to \infty \), for any \( \epsilon > 0 \), we can take a sufficiently large integer \( N \) satisfying
+\[
+|s_n - \alpha| < \epsilon
+\]
+for all integers \( n > N \). For \( 0 < x < 1 \), we have
+\[
+\frac{f(x)}{1-x} = \sum_{n=0}^\infty s_n x^n = \frac{\alpha}{1-x} + \sum_{n=0}^\infty (s_n - \alpha)x^n;
+\]
+therefore
+\[
+|f(x) - \alpha| \leq (1-x) \sum_{n=0}^N |s_n - \alpha| x^n + (1-x) \sum_{n>N} |s_n - \alpha| x^n
+\]
+\[
+< (1-x) \sum_{n=0}^N |s_n - \alpha| + (1-x) \sum_{n=0}^\infty \epsilon x^n
+\]
+\[
+= (1-x) \sum_{n=0}^N |s_n - \alpha| + \epsilon.
+\]
+
+The right-hand side can be \( < 2\epsilon \) by letting \( x \) be sufficiently close to \( 1^- \). This means that \( f(x) \) converges to \( \alpha \) as \( x \to 1^- \). \(\Box\)"
+7_2,Series of Functions,"Show that
+\[
+\lim_{x \to 1^-} (1-x)^2 \sum_{n=1}^\infty \frac{n x^n}{1 - x^n} = \frac{\pi^2}{6}.
+\]","Applying \textbf{Problem 6.4} for \( f(x) = x / (e^x - 1) \), we get
+\[
+h \sum_{n=1}^\infty \frac{n h}{e^{n h} - 1} \to \int_0^\infty \frac{x \, dx}{e^x - 1} = \frac{\pi^2}{6}
+\]
+as \( h \to 0^+ \). By the substitution \( h = -\log x \), it holds that \( h \) converges to \( 0^+ \) if and only if \( x \) converges to \( 1^- \); hence, using \( -\log x \sim 1 - x \) as \( x \to 1^- \),
+\[
+\lim_{x \to 1^-} (1 - x)^2 \sum_{n=1}^\infty \frac{n x^n}{1 - x^n}
+= \lim_{x \to 1^-} (\log x)^2 \sum_{n=1}^\infty \frac{n x^n}{1 - x^n}
+= \lim_{h \to 0^+} h \sum_{n=1}^\infty \frac{n h}{e^{n h} - 1} = \frac{\pi^2}{6}.
+\]
+Note that the function \( f(x) = x / (e^x - 1) \) can be regarded as a continuous function on the interval \([0, \infty)\) if we define \( f(0) = 1 \)."
+8_1,Approximation by Polynomials,"For any $f \in C[0, 1]$, the polynomial of degree $n$ defined by
+\[
+B_n(f; x) = \sum_{k=0}^n f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k}
+\]
+is called the Bernstein polynomial. Show then that $B_n(f; x)$ converges to $f(x)$ uniformly on the interval $[0, 1]$.","For any positive $\epsilon$ it follows from the uniform continuity of $f$ that there is a positive $\delta$ such that $\lvert f(x) - f(y) \rvert < \epsilon$ for any $x$ and $y$ in the interval $[0, 1]$ with $\lvert x - y \rvert < \delta$. Let $M$ be the maximum of $\lvert f(x) \rvert$ on $[0, 1]$ and let $\{d_n\}$ be any monotone sequence of positive integers diverging to $\infty$ and satisfying $d_n = o(n)$ as $n \to \infty$. We divide the difference into two parts as follows:
+\[
+B_n(f; x) - f(x) = \sum_{k=0}^n \left( f\left(\frac{k}{n}\right) - f(x) \right) \binom{n}{k} x^k (1 - x)^{n-k} = S_0(x) + S_1(x),
+\]
+where in $S_0(x)$ the summation runs through the values of $k \in [0, n]$ for which $\lvert x - k/n \rvert \leq d_n / n$ and in $S_1(x)$ the summation runs through the remaining values of $k$.
+
+Now we consider all sufficiently large $n$ satisfying $d_n / n < \delta$. For the sum $S_0(x)$, using $\lvert f(x) - f(k/n) \rvert < \epsilon$ we get
+\[
+\lvert S_0(x) \rvert \leq \epsilon \sum_{k=0}^n \binom{n}{k} x^k (1 - x)^{n-k} = \epsilon.
+\]
+On the other hand, for the sum $S_1(x)$, using $\lvert j - nx \rvert > d_n$ we obtain
+\[
+\lvert S_1(x) \rvert < 2M \sum_{k=0}^n \frac{(j - nx)^2}{d_n^2} \binom{n}{k} x^k (1 - x)^{n-k} 
+= \frac{2M}{d_n^2} \left( n^2x^2 + nx(1 - x) - 2n^2x^2 + n^2x^2 \right) 
+= \frac{2M}{d_n^2} nx(1 - x) \leq \frac{nM}{2d_n^2},
+\]
+where we used the fact that $B_n(1; x) = 1$, $B_n(x; x) = x$, and 
+\[
+B_n(x^2; x) = x^2 + \frac{x(1 - x)}{n}.
+\]
+
+We then take $d_n = \lfloor n^{2/3} \rfloor$ so that $d_n / \sqrt{n}$ diverges as $n \to \infty$. Hence we have $\lvert S_0(x) + S_1(x) \rvert < 2\epsilon$ for all sufficiently large $n$."
+8_2,Approximation by Polynomials,"Show that there exists a sequence of polynomials with integral coefficients converging to $f \in C[0, 1]$ uniformly if $f(0) = f(1) = 0$.","The Bernstein polynomial for \(f\) defined in \textbf{Problem 8.1} is
+\[
+B_n(f; x) = \sum_{k=1}^{n-1} f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k}.
+\]
+
+Since \(f(0) = f(1) = 0\), if \(n = p\) is a prime number, then the binomial coefficient \(\binom{p}{k}\) is clearly a multiple of \(p\) for every integer \(k \in [1, p)\). Hence,
+\[
+\widetilde{B}_p(f; x) = \sum_{k=1}^{p-1} \frac{1}{p} \binom{p}{k} \left\lfloor \frac{p}{k} \right\rfloor f\left(\frac{k}{p}\right) x^k (1-x)^{p-k}
+\]
+is a polynomial with integral coefficients where \(\lfloor x \rfloor\) denotes the integral part of \(x\). 
+
+Since we have
+\[
+\left| B_p(f; x) - \widetilde{B}_p(f; x) \right| \leq \frac{1}{p} \sum_{k=1}^{p-1} \binom{p}{k} x^k (1-x)^{p-k} < \frac{1}{p},
+\]
+it is clear that \(\widetilde{B}_p(f; x)\) converges also to \(f(x)\) uniformly as \(p \to \infty\).
+"
+8_6,Approximation by Polynomials,"For all non-negative integers $n$, show that
+\[
+\int_0^\infty x^n (\sin x^{1/4}) \exp(-x^{1/4}) \, dx = 0.
+\]","For brevity, put
+\[
+I_n = \int_0^\infty x^n e^{-x} \sin x \, dx \quad \text{and} \quad J_n = \int_0^\infty x^n e^{-x} \cos x \, dx
+\]
+for any non-negative integer $n$. By the substitution $t = x^{1/4}$, the given integral in the problem is equal to $4 I_{4n+3}$. By partial integration, we easily get
+\[
+\begin{cases}
+I_n = \frac{n}{2} \left( I_{n-1} + J_{n-1} \right), \\
+J_n = \frac{n}{2} \left( J_{n-1} - I_{n-1} \right),
+\end{cases}
+\]
+for any positive integer $n$. Solving these recursion formulae with the initial condition $I_0 = J_0 = 1/2$, we obtain $I_n = 0$ for any integer $n$ satisfying $n \equiv 3 \, (\text{mod} \, 4)$."
+8_3,Approximation by Polynomials,Deduce the approximation theorem by trigonometric polynomials from Weierstrass' approximation theorem by polynomials.,"For any continuous periodic function with period $2\pi$, we write $f(x) = f_+(x) + f_-(x)$ where 
+\[
+f_{\pm}(x) = \frac{f(x) \pm f(-x)}{2}
+\]
+respectively. $f_{\pm}$ are also continuous periodic functions with the same period satisfying $f_+(-x) = f_+(x)$ and $f_-(x) + f_-(k\pi) = 0$. Note that $f_-(k\pi) = 0$ for any integer $k$.
+
+For any $\epsilon > 0$ we can take a continuous odd function $\phi(x)$ with period $2\pi$ such that $|f_-(x) - \phi(x)| < \epsilon$ for any $x \in \mathbb{R}$ and that $\phi(x)$ vanishes on every point of some small neighborhoods of the points $k\pi$. Since $x = \arccos y$ maps the interval $[-1,1]$ onto $[0,\pi]$ homeomorphically, the functions 
+\[
+f_+(\arccos y) \quad \text{and} \quad \frac{\phi(\arccos y)}{\sin(\arccos y)}
+\]
+are continuous on the interval $[-1,1]$. Thus applying Weierstrass' approximation theorem to these functions, we can find certain polynomials $P(y)$ and $Q(y)$ satisfying
+\[
+|f_+(x) - P(\cos x)| < \epsilon \quad \text{and} \quad \left|\phi(x) - (\sin x) Q(\cos x)\right| < \epsilon
+\]
+for any $0 \leq x \leq \pi$. Moreover the inequalities hold for any $x \in \mathbb{R}$ by the evenness of $f_+(x)$ and $P(\cos x)$, by the oddness of $\phi(x)$ and $(\sin x) Q(\cos x)$ and, of course,
+
+by the periodicity of these functions. We therefore obtain 
+\[
+|f(x) - P(\cos x) - (\sin x) Q(\cos x)| \leq |f_+(x) - P(\cos x)| + |f_-(x) - \phi(x)| + |\phi(x) - (\sin x)Q(\cos x)|
+< 3\epsilon
+\]
+for any $x \in \mathbb{R}$. Finally it is easily verified that each $\cos^k x$ can be written as a linear combination of $1, \cos x, \ldots, \cos kx$ and that each $(\sin x) \cos^k x$ can be expressed as a linear combination of $\sin x, \sin 2x, \ldots, \sin kx$. This completes the proof."
+9_6,Convex Functions,Show that any continuous convex function $f(x)$ on an open interval $I$ possesses a finite derivative except for at most countable points.,"Let \( f'_+(x) \) and \( f'_-(x) \) be the right- and left-hand derivatives of \( f \) at \( x \) respectively. First we will prove that \( f'_\pm(x) \) exist at every point \( x \) in the open interval \( I \). For brevity let \( \Delta(x,y) \) denote the difference quotient
+\[
+\Delta(x, y) = \frac{f(x) - f(y)}{x - y}
+\]
+for any \( x \neq y \) in \( I \). Let \( x < y < z \) be arbitrary three points in \( I \). Applying the inequality stated in \textbf{Problem 9.4} with \( \lambda_1 = z-y, x_1 = x \) and \( \lambda_2 = y-x, x_2 = z \),
+
+we get \( y = (\lambda_1 x_1 + \lambda_2 x_2)/(\lambda_1 + \lambda_2) \) and
+\[
+f(y) \leq \frac{z-y}{z-x} f(x) + \frac{y-x}{z-x} f(z).
+\]
+Thus \( \Delta(x, y) \leq \Delta(y, z) \). Note that the above inequality can also be written as \( \Delta(x, y) \leq \Delta(x, z) \) or as \( \Delta(x, z) \leq \Delta(y, z) \). In particular, the quotients \( \Delta(x-h, x) \) and \( \Delta(x, x+h) \) are monotone increasing with respect to \( h > 0 \) and \( \Delta(x-h, x) \leq \Delta(x, x+h) \) holds for any \( h > 0 \) satisfying \( x \pm h \in I \). This means that both \( f'_+(x) \) and \( f'_-(x) \) certainly exist and satisfy \( f'_-(x) \leq f'_+(x) \).
+
+Next for any points \( x < y \) in \( I \) we take a sufficiently small \( h > 0 \) satisfying \( x + h < y - h \). Then
+\[
+\Delta(x, x+h) \leq \Delta(x+h, y-h) \leq \Delta(y-h, y);
+\]
+hence, letting \( h \to 0^+ \) we obtain \( f'_+(x) \leq f'_-(y) \). Therefore if \( f(x) \) does not possess a finite differential coefficient at \( x_0 \), then it follows that \( f'_-(x_0) < f'_+(x_0) \). Moreover if we assign the point \( x_0 \) to the open interval \( (f'_-(x_0), f'_+(x_0)) \), then such intervals are disjoint each other. Therefore we can enumerate all such open intervals by labeling them, for example, in such a way that we count ones contained in \( (-n, n) \) and having the length \( > 1/n \) for each positive integer \( n \). \(\square\)"
+9_1,Convex Functions,"Suppose that $f(x)$ is convex on an interval $I$. Show that
+\[
+f\left(\frac{x_1 + x_2 + \cdots + x_n}{n}\right) \leq \frac{f(x_1) + f(x_2) + \cdots + f(x_n)}{n}
+\]
+for arbitrary $n$ points $x_1, x_2, \ldots, x_n$ in $I$.","By \( m \) times applications of convexity for \( f \), we easily get
+\[
+f\left(\frac{x_1 + x_2 + \cdots + x_{2^m}}{2^m}\right) \leq \frac{f(x_1) + f(x_2) + \cdots + f(x_{2^m})}{2^m}
+\]
+for any \( 2^m \) points \( x_1, \ldots, x_{2^m} \) in \( I \). For any integer \( n \geq 3 \), we choose \( m \) satisfying \( n < 2^m \). Now adding to \( x_1, \ldots, x_n \) the new \( 2^m - n \) points
+\[
+x_{n+1} = \cdots = x_{2^m} = \frac{x_1 + x_2 + \cdots + x_{2^m}}{n}
+\]
+in \( I \), we have
+\[
+2^m f(y) \leq f(x_1) + \cdots + f(x_n) + (2^m - n) f\left(\frac{x_1 + x_2 + \cdots + x_n}{n}\right)
+\]
+where
+\[
+y = \frac{1}{2^m} \left(x_1 + x_2 + \cdots + x_n + (2^m - n) \frac{x_1 + x_2 + \cdots + x_n}{n} \right)
+= \frac{x_1 + x_2 + \cdots + x_n}{n};
+\]
+namely
+\[
+f\left(\frac{x_1 + x_2 + \cdots + x_n}{n}\right) \leq \frac{f(x_1) + f(x_2) + \cdots + f(x_n)}{n}.
+\]"
+9_10,Convex Functions,Suppose that \( f(x) \) is twice differentiable in an open interval \( I \). Show then that \( f(x) \) is convex if and only if \( f''(x) \geq 0 \) on \( I \).,"Suppose that \( f(x) \) is convex on \( I \). We have already seen in the proof of \textbf{Problem 9.6} that \( f'_+(x) \leq f'_-(y) \) for any points \( x < y \) in \( I \). Since \( f(x) \) is twice differentiable, the derivative \( f'(x) \) is monotone increasing on \( I \), whence \( f''(x) \geq 0 \).
+
+Conversely suppose that \( f''(x) \geq 0 \). Let \( x \) and \( y \) be any points in \( I \). By Taylor's formula centered at \( (x+y)/2 \) we obtain
+\[
+f(x) = f\left( \frac{x+y}{2} \right) + f'\left( \frac{x+y}{2} \right) \frac{x-y}{2} + \frac{f''(c)}{8} (x-y)^2
+\]
+and
+\[
+f(y) = f\left( \frac{x+y}{2} \right) + f'\left( \frac{x+y}{2} \right) \frac{y-x}{2} + \frac{f''(c')}{8} (x-y)^2
+\]
+for some \( c \) and \( c' \). Adding the two equalities we get
+\[
+f(x) + f(y) = 2f\left( \frac{x+y}{2} \right) + \frac{f''(c) + f''(c')}{8} (x-y)^2 \geq 2f\left( \frac{x+y}{2} \right).
+\]
+Hence \( f(x) \) is convex on \( I \)."
+9_11,Convex Functions,"Suppose that \( f \in C^2[0, \infty) \) is convex and bounded. Show that the improper integral
+\[
+\int_0^\infty x f''(x) \, dx
+\]
+converges.","Suppose $\delta = f'(x_0) > 0$ for some $x_0 > 0$. Since $f'(x)$ is monotone increasing, we have $f'(x) \geq \delta$ for any $x \geq x_0$ and hence
+\[
+f(x) = f(x_0) + \int_{x_0}^x f'(t) \, dt \geq f(x_0) + \delta (x - x_0),
+\]
+contrary to the assumption that $f$ is bounded. Thus $f'(x) \leq 0$ for any $x > 0$ and it follows that $f(x)$ is monotone decreasing and converges to some $\lambda$ as $x \to \infty$. Therefore we have
+\[
+\lambda - f(x) = \int_x^\infty f'(t) \, dt
+\]
+and, in particular, $f'(x)$ converges to $0$ as $x \to \infty$. By the Cauchy criterion we have, for any $\epsilon > 0$,
+\[
+0 < -\int_\alpha^\beta f'(t) \, dt < \epsilon
+\]
+for all sufficiently large $\alpha$ and $\beta > \alpha$. Since $f'(x)$ is non-positive and monotone increasing, we obtain $(\beta - \alpha)|f'(\beta)| < \epsilon$; therefore
+\[
+\beta |f'(\beta)| < \epsilon + \alpha |f'(\beta)|.
+\]
+The right-hand side can be smaller than $2\epsilon$ if we take $\beta$ sufficiently large. Hence $x f'(x)$ converges to $0$ as $x \to \infty$. Thus
+\[
+\int_0^x t f''(t) \, dt = x f'(x) - f(x) + f(0)
+\]
+converges to $f(0) - \lambda$ as $x \to \infty$."
+9_3,Convex Functions,"Suppose that $f(x)$ is convex and bounded above on an open interval $(a, b)$. Show then that $f(x)$ is continuous on $(a, b)$.","Suppose that $f(x) < K$ for some constant $K$. For an arbitrary fixed $y$ in the interval $(a, b)$ and any positive integer $n$, the points $y \pm n\delta$ belong to $(a, b)$ for all sufficiently small positive $\delta$. Of course $\delta$ depends on $n$. Applying the inequality described in \textbf{Problem 9.1} to the $n$ points $x_1 = y \pm n\delta, x_2 = \cdots = x_n = y$, we get
+\[
+f(y \pm \delta) \leq \frac{f(y \pm n\delta) + (n-1)f(y)}{n}
+\]
+respectively. Hence we have
+\[
+f(y + \delta) - f(y) \leq \frac{f(y + n\delta) - f(y)}{n} \leq \frac{K - f(y)}{n}
+\]
+and
+\[
+f(y) - f(y - \delta) \geq \frac{f(y) - f(y - n\delta)}{n} \geq \frac{f(y) - K}{n}.
+\]
+
+Since $f(y) - f(y - \delta) \leq f(y + \delta) - f(y)$ and $n$ is arbitrary, these mean that $f(x)$ is continuous at the point $y$. "
+9_2,Convex Functions,Show that $f(x)$ is convex on an interval $I$ if and only if $e^{\lambda f(x)}$ is convex on $I$ for any positive $\lambda$.,"Suppose first that $f(x)$ is convex on the interval $I$. Since $e^{\lambda x}$ is convex and monotone increasing on $\mathbb{R}$, we have
+\[
+\exp\left(\lambda f\left(\frac{x_1 + x_2}{2}\right)\right) \leq \exp\left(\frac{\lambda f(x_1) + f(x_2)}{2}\right) \leq \frac{e^{\lambda f(x_1)} + e^{\lambda f(x_2)}}{2}
+\]
+for any $x_1$ and $x_2$ in $I$. Hence $e^{\lambda f(x)}$ is convex on $I$.
+
+Conversely, suppose that $e^{\lambda f(x)}$ is convex on $I$ for any positive $\lambda$. The asymptotic expansions as $\lambda \to 0^+$ of both sides of the inequality
+\[
+\exp\left(\lambda f\left(\frac{x_1 + x_2}{2}\right)\right) \leq \frac{e^{\lambda f(x_1)} + e^{\lambda f(x_2)}}{2}
+\]
+give
+\[
+1 + \lambda f\left(\frac{x_1 + x_2}{2}\right) + O(\lambda^2) \leq 1 + \lambda \frac{f(x_1) + f(x_2)}{2} + O(\lambda^2),
+\]
+for any $x_1$ and $x_2$ in $I$, which implies the convexity of $f(x)$ on $I$. "

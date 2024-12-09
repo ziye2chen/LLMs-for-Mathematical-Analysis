@@ -13,11 +13,7 @@ By fine-tuning LLMs on DEMI-MathAnalysis and employing our framework, we have ob
 - [Motivation](#motivation)
 - [Dataset](#dataset)
 - [Framework and Model](#framework-and-model)
-- [Pretraining & Fine-Tuning](#pretraining--fine-tuning)
-- [Evaluation](#evaluation)
-- [Results](#results)
-- [Future Work](#future-work)
-- [Repository Structure](#repository-structure)
+- [Run the Models](#run-the-models)
 - [Citation](#citation)
 - [License](#license)
 
@@ -81,3 +77,32 @@ pip install -r requirements.txt
 ```
 
 Run the code in the [**RealAnalysis_Final_Code.ipynb**](https://github.com/ziye2chen/LLMs-for-Mathematical-Analysis/blob/main/RealAnalysis_Final_Code.ipynb)
+
+If you want to change the model, change the **model_name** below:
+
+```python
+if True:
+    from unsloth import FastLanguageModel
+    model, tokenizer = FastLanguageModel.from_pretrained(
+        model_name = "MathAnalysis_Qwen_Classifier", # YOUR MODEL YOU USED FOR TRAINING
+        max_seq_length = 10240,
+        dtype = dtype,
+        load_in_4bit = load_in_4bit,
+    )
+    FastLanguageModel.for_inference(model) # Enable native 2x faster inference
+```
+```python
+if True:
+    from unsloth import FastLanguageModel
+    model, tokenizer = FastLanguageModel.from_pretrained(
+        model_name = "MathAnalysis_Qwen_ProblemSolver", # YOUR MODEL YOU USED FOR TRAINING
+        max_seq_length = 10240,
+        dtype = dtype,
+        load_in_4bit = load_in_4bit,
+    )
+    FastLanguageModel.for_inference(model) # Enable native 2x faster inference
+```
+
+- **"MathAnalysis_Qwen_Classifier"** and **"MathAnalysis_Qwen_Classifier"**: fine-tuned Qwen2.5-Math-7B-bnb-4bit
+- **"MathAnalysis_Llama_Classifier"** and **"MathAnalysis_Llama_Classifier"**: fine-tuned Llama-3.2-3B-Instruct
+

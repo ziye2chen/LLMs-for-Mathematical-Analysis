@@ -13,8 +13,8 @@ By fine-tuning LLMs on DEMI-MathAnalysis and employing our framework, we have ob
 - [Motivation](#motivation)
 - [Dataset](#dataset)
 - [Framework and Model](#framework-and-model)
-- [Run the Models](#run-the-models)
-- [Citation](#citation)
+- [To Run the Models](#to-run-the-models)
+- [Reference](#reference)
 
 ## Overview
 
@@ -45,10 +45,9 @@ The dataset is split into:
 
 Each problem includes a detailed statement and metadata. Data files are available in the [**DEMI-MathAnalysis**](https://people.eecs.berkeley.edu/~hendrycks/MATH.tar).
 
-
 ## Framework and Model
 
-The DEMI-MathAnalysis framework is built to guide LLMs through a structured approach to solving proof-based mathematical problems. It consists of the following key steps:
+A special framework is built to guide LLMs through a structured approach to solving proof-based mathematical problems. It consists of the following key steps:
 
 1. **Problem Identification**:  
    The LLM classifies each problem into a specific category (e.g., Sequences and Limits, Infinite Series, Convex Functions). This step ensures that the reasoning strategies and retrieved knowledge are tailored to the nature of the problem.
@@ -66,8 +65,7 @@ The DEMI-MathAnalysis framework is built to guide LLMs through a structured appr
   <img src="https://github.com/ziye2chen/LLMs-for-Mathematical-Analysis/blob/main/img/framework.png" alt="head" width="600px" />
 </p>
 
-
-## Run the Models
+## To Run the Models
 
 Install the required packages：
 
@@ -75,7 +73,7 @@ Install the required packages：
 pip install -r requirements.txt
 ```
 
-Run the code in the [**RealAnalysis_Final_Code.ipynb**](https://github.com/ziye2chen/LLMs-for-Mathematical-Analysis/blob/main/RealAnalysis_Final_Code.ipynb)
+Run the code in [**RealAnalysis_Final_Code.ipynb**](https://github.com/ziye2chen/LLMs-for-Mathematical-Analysis/blob/main/RealAnalysis_Final_Code.ipynb)
 
 If you want to change the model, change the **model_name** below:
 
@@ -105,8 +103,16 @@ if True:
 - **"MathAnalysis_Qwen_Classifier"** and **"MathAnalysis_Qwen_Classifier"**: fine-tuned Qwen2.5-Math-7B-bnb-4bit
 - **"MathAnalysis_Llama_Classifier"** and **"MathAnalysis_Llama_Classifier"**: fine-tuned Llama-3.2-3B-Instruct
 
-## Citation
+## Reference
+
 ```bibtex
+@software{unsloth,
+  author = {Daniel Han, Michael Han and Unsloth team},
+  title = {Unsloth},
+  url = {http://github.com/unslothai/unsloth},
+  year = {2023}
+}
+
 @book{demidovich1964problems,
     title={Problems in Mathematical Analysis. Edited by B. Demidovich. Translated From the Russian by G. Yankovsky},
     author={Demidovich, B.P.},
@@ -135,6 +141,16 @@ if True:
       archivePrefix={arXiv},
       primaryClass={cs.AI},
       url={https://arxiv.org/abs/2407.21783}, 
+}
+
+@misc{yang2024qwen2technicalreport,
+      title={Qwen2 Technical Report}, 
+      author={Alibaba},
+      year={2024},
+      eprint={2407.10671},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2407.10671}, 
 }
 
 @techreport{GPT4o,

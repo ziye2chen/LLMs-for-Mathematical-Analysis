@@ -72,10 +72,12 @@ The DEMI-MathAnalysis framework is built to guide LLMs through a structured appr
 </p>
 
 
-**Model Choices**:  
-We have experimented with several LLMs, including both open-source and commercial solutions. Fine-tuning these models on DEMI-MathAnalysis significantly boosts their ability to handle rigor in mathematical analysis. Detailed instructions for model selection, training, and inference are provided in the sections below.
+## Run the Models
+
+Install the required packages：
 
 ```bash
-# Example command to integrate the framework into a training pipeline
-python scripts/run_framework.py --model <MODEL_NAME> --data data/train --kb data/knowledge_base.json
+pip install -r requirements.txt
 ```
+
+Run the code in the [**RealAnalysis_Final_Code.ipynb**](https://github.com/ziye2chen/LLMs-for-Mathematical-Analysis/blob/main/RealAnalysis_Final_Code.ipynb)

@@ -15,7 +15,6 @@ By fine-tuning LLMs on DEMI-MathAnalysis and employing our framework, we have ob
 - [Framework and Model](#framework-and-model)
 - [Run the Models](#run-the-models)
 - [Citation](#citation)
-- [License](#license)
 
 ## Overview
 
@@ -105,4 +104,51 @@ if True:
 
 - **"MathAnalysis_Qwen_Classifier"** and **"MathAnalysis_Qwen_Classifier"**: fine-tuned Qwen2.5-Math-7B-bnb-4bit
 - **"MathAnalysis_Llama_Classifier"** and **"MathAnalysis_Llama_Classifier"**: fine-tuned Llama-3.2-3B-Instruct
+
+## Citation
+```
+@book{demidovich1964problems,
+    title={Problems in Mathematical Analysis. Edited by B. Demidovich. Translated From the Russian by G. Yankovsky},
+    author={Demidovich, B.P.},
+    series={Russian Monographs and Texts on Advanced Mathematics and Physics},
+    url={https://books.google.com/books?id=XdmpwgEACAAJ},
+    year={1964},
+    publisher = {Mir Publishers}  
+}
+
+@book{hata2007problems,
+  title={Problems and Solutions in Real Analysis},
+  author={Hata, M.},
+  isbn={9789812776013},
+  lccn={2008295629},
+  series={Series on number theory and its applications},
+  url={https://books.google.com/books?id=vSxkRgQe0AcC},
+  year={2007},
+  publisher={World Scientific}
+}
+
+@misc{dubey2024llama3herdmodels,
+      title={The Llama 3 Herd of Models}, 
+      author={Meta},
+      year={2024},
+      eprint={2407.21783},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2407.21783}, 
+}
+
+@techreport{GPT4o,
+    author = {OpenAI},
+    title = {GPT-4o System Card},
+    year = {2024}, 
+    url = {https://cdn.openai.com/gpt-4o-system-card.pdf}
+}
+
+@techreport{OpenAIo1,
+    author = {OpenAI},
+    title = {OpenAI o1 System Card},
+    year = {2024}, 
+    url = {https://assets.ctfassets.net/kftzwdyauwt9/67qJD51Aur3eIc96iOfeOP/71551c3d223cd97e591aa89567306912/o1_system_card.pdf}
+}
+```
 

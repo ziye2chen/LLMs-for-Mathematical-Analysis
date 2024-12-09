@@ -26,7 +26,6 @@ The DEMI-MathAnalysis project provides:
 
 Most mathematical datasets for LLMs focus on computational questions, leaving a significant gap in training for formal reasoning tasks. DEMI-MathAnalysis addresses this gap by supplying proof-oriented challenges. By doing so, we help models develop the precise and structured thinking required in advanced mathematics.
 
-
 ## Dataset
 
 **DEMI-MathAnalysis** covers topics often studied in undergraduate real analysis courses:
@@ -43,7 +42,7 @@ The dataset is split into:
 - **Training Set**: Used for fine-tuning models.
 - **Benchmark Set**: Reserved for unbiased evaluation.
 
-Each problem includes a detailed statement and metadata. Data files are available in the [**DEMI-MathAnalysis**](https://people.eecs.berkeley.edu/~hendrycks/MATH.tar).
+Each problem includes a detailed statement and metadata. Data files are available [**here**](https://people.eecs.berkeley.edu/~hendrycks/MATH.tar).
 
 ## Framework and Model
 

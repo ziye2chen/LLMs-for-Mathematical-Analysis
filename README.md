@@ -106,7 +106,7 @@ if True:
 - **"MathAnalysis_Llama_Classifier"** and **"MathAnalysis_Llama_Classifier"**: fine-tuned Llama-3.2-3B-Instruct
 
 ## Citation
-```
+```bibtex
 @book{demidovich1964problems,
     title={Problems in Mathematical Analysis. Edited by B. Demidovich. Translated From the Russian by G. Yankovsky},
     author={Demidovich, B.P.},

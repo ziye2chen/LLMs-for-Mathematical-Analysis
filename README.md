@@ -102,7 +102,7 @@ if True:
 - **"MathAnalysis_Qwen_Classifier"** and **"MathAnalysis_Qwen_Classifier"**: fine-tuned Qwen2.5-Math-7B-bnb-4bit
 - **"MathAnalysis_Llama_Classifier"** and **"MathAnalysis_Llama_Classifier"**: fine-tuned Llama-3.2-3B-Instruct
 
-If you want to choose another large language models and fine-tune it, run the code in [**pretraining.ipynb**](https://github.com/ziye2chen/LLMs-for-Mathematical-Analysis/blob/main/pretraining.ipynb).
+If you want to choose another LLM and fine-tune it, run the code in [**pretraining.ipynb**](https://github.com/ziye2chen/LLMs-for-Mathematical-Analysis/blob/main/pretraining.ipynb).
 
 ## Reference
 
